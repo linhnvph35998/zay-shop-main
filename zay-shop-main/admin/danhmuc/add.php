@@ -1,6 +1,5 @@
 <body>
-
-    <div class="wrapper">
+    <div class="wrapper margin-top 100px">
         <div class="font-title">
             <h1>Thêm mới danh mục</h1>
         </div>
@@ -19,9 +18,18 @@
                     <input type="file" name="img">
                 </div>
                 <div class="row-btn">
-                    <input type="submit" name="them" value="Thêm">
+                    <input onclick="return confirmAdd()" type="submit" name="them" value="Thêm">
                 </div>
             </form>
         </div>
     </div>
+    <script>
+        function confirmAdd(){
+            if(confirm("Bạn có chắc muốn thêm")){
+                document.location = "index.php?act=listdm";
+            }else{
+                return false;
+            }
+        }
+    </script>
 </body>

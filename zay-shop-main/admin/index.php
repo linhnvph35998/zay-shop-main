@@ -6,42 +6,46 @@
 <link rel="stylesheet" href="./CSS/list.css">
 <link rel="stylesheet" href="./CSS/home.css">
 <link rel="stylesheet" href="./CSS/aside.css">
+<link rel="stylesheet" href="./CSS/add.css">
+<link rel="stylesheet" href="./CSS/edit.css">
 
 <?php
 include "hearder.php";
-if(isset($_GET['act'])&&$_GET['act']!=""){
+include "../model/pdo.php";
+include "../model/danhmuc.php";
+include "./tinhtong.php";
+if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
-    switch($act){
+    switch ($act) {
         case "adddm";
-        if(isset($_POST['them'])&& $_POST['them']){
-            $id = $_POST['id'];
-            $name = $_POST['name'];
-            $target = "../img/";
-            $img = $_FILES["img"]["name"];
-            $target_file = $target.basename($_FILES["img"]["name"]);
-            move_uploaded_file($_FILES["img"]["tmp_name"],$target_file);
-            addDm($name,$img); 
-        }
+            if (isset($_POST['them']) && $_POST['them']) {
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $target = "../img/";
+                $img = $_FILES["img"]["name"];
+                $target_file = $target . basename($_FILES["img"]["name"]);
+                move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+                addDm($name, $img);
+            }
+            include "./danhmuc/add.php";
+            break;
         case "listdm";
-        $listdanhmuc = loadAllDm();
-        include "./danhmuc/list.php";
-        break;
+            $listdanhmuc = loadAllDm();
+            include "./danhmuc/list.php";
+            break;
 
-
+        
         default:
-        $tongdm = tinhtongdm();
-        $tongsp = tinhtong();
-        $tongkhachhang = tinhtongkhachhang();
-        $tongbinhluan = tinhtongbinhluan();
+            $tongdm = tinhtongdm();
+            $tongsp = tinhtong();
+            $listdanhmuc = loadAllDm();
+            include "./home.php";
+            break;
     };
-    
-
-}else{
+} else {
     $tongdm = tinhtongdm();
     $tongsp = tinhtong();
-    $tongkhachhang = tinhtongkhachhang();
-    $tongbinhluan = tinhtongbinhluan();
-    include "home.php";
+    include "./home.php";
 }
 include "footer.php";
 ?>
