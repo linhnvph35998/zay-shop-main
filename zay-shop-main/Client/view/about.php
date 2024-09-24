@@ -212,6 +212,8 @@
 
 
 
+
+</body>
     <!-- Start Script -->
     <script src="/zay-shop-main/assets/js/jquery-1.11.0.min.js"></script>
     <script src="/zay-shop-main/assets/js/jquery-migrate-1.2.1.min.js"></script>
@@ -219,4 +221,3 @@
     <script src="/zay-shop-main/assets/js/templatemo.js"></script>
     <script src="/zay-shop-main/assets/js/custom.js"></script>
     <!-- End Script -->
-</body>

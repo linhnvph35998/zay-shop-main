@@ -1,29 +1,39 @@
-<div class="center-container">
-	<!--header-->
-	<div class="header-w3l">
+<?php
+$regexEmail = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/";
+?>
+<div class="wrapper">
+	<div class="login">
 		<h1>Đăng ký</h1>
-	</div>
-	<!--//header-->
-	<div class="main-content-agile">
-		<div class="sub-main-w3">	
-			<div class="wthree-pro">
-				<h2>Đăng nhập</h2>
+		<form action="index.php?act=dangky" method="post" class="form-login">
+			<div class="form-input">
+				<p>Tài khoản</p>
+				<input type="text" name="username" />
 			</div>
-			<form action="#" method="post">
-				<div class="pom-agile">
-					<input placeholder="E-mail" name="Name" class="user" type="email" required="">
-					<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-				</div>
-				<div class="pom-agile">
-					<input  placeholder="Password" name="Password" class="pass" type="password" required="">
-					<span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span>
-				</div>
-				<div class="sub-w3l">
-					<h6><a href="#">Bạn quên mật khẩu?</a></h6>
-					<div class="right-w3l">
-						<input type="submit" value="Login">
-					</div>
-				</div>
-			</form>
-		</div>
+			<div class="form-input">
+				<p>Email</p>
+				<input type="text" name="email" />
+			</div>
+			<div class="form-input">
+				<p>Số điện thoại</p>
+				<input type="text" name="sdt" />
+			</div>
+			<div class="form-input">
+				<p>Nhập mật khẩu</p>
+				<input type="password" name="password" />
+			</div>
+			<div class="form-input">
+				<p>Địa chỉ</p>
+				<input type="text" name="diachi" />
+			</div>
+			<div class="forget-password">
+				<a href="">Quên mật khẩu ?</a>
+			</div>
+			<div class="login-btn">
+				<input type="submit" name="dangky" value="Đăng Ký">
+			</div>
+			<div class="forget-password">
+				<a href="index.php?act=dangnhap">Đăng nhập</a>
+			</div>
+		</form>
 	</div>
+</div>
