@@ -29,7 +29,7 @@
                         echo '<tr>
                         <td style="width: 100px;">'.$id.'</td>
                         <td style="width: 500px;">'.$name.'</td>
-                        <td style="width: 500px;"><img src="../../img/'.$img.'></td>
+                        <td style="width: 500px;"><img src="../img/'.$img.'"></td>
                         <td style="height: 100px;" class="edit-delete">
                         <a href="'.$sua.'" class="edit">
                              Sửa

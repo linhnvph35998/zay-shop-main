@@ -1,6 +1,6 @@
 <aside>
     <div class="brand">
-        <img src="anhadmin.jpg" alt="" />
+        <img src="https://picsum.photos/200/300" alt="" />
         <p>Admin</p>
     </div>
     <div class="sidebar">
