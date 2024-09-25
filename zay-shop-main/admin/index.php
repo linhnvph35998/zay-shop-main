@@ -43,13 +43,13 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             include "./danhmuc/list.php";
             break;
         case "editdm";
-            if(isset($_GET['id'])&&$_GET['id']>0){
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $danhmuc = loadOneDm($_GET['id']);
             }
-            if(isset($_POST['sua'])&&$_POST['sua']){
+            if (isset($_POST['sua']) && $_POST['sua']) {
                 $id = $_POST['id'];
                 $name = $_POST['name'];
-                editDm($id,$name);
+                editDm($id, $name);
             }
             include "./danhmuc/edit.php";
             break;

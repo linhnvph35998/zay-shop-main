@@ -1,0 +1,286 @@
+.wrapper {
+  width: 1300px;
+  margin: auto;
+}
+
+.wrapper-main {
+  text-align: center;
+  font-size: 30px;
+  margin: 24px 0px;
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+  margin: 20px 0px;
+}
+
+.product-detail-img img {
+  width: 400px;
+  object-fit: cover;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 45%;
+  margin-left: 27px;
+}
+
+.product-details h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-details h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 900;
+}
+
+.product-details h3 {
+  font-size: 20px;
+  margin: 20px 0px;
+  font-weight: 900;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.quantity input::-webkit-inner-spin-button,
+.quantity input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity input:focus {
+  outline: none;
+}
+
+.quantity .product-detail-count {
+  width: 50px;
+  height: 40px;
+  text-align: center;
+}
+
+.quantity #increase,
+.quantity #decrease {
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  outline: none;
+  border: none;
+}
+
+.count {
+  width: 50px;
+  text-align: center;
+}
+
+.product-details .number input {
+  width: 40px;
+  height: 30px;
+}
+
+.product-details p {
+  margin-bottom: 10px;
+  color: rgb(119, 119, 119);
+}
+
+.product-details-click {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  width: 200px;
+  height: 64px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.product-details-click p {
+  color: #fff;
+}
+
+.product-details-click:hover {
+  opacity: 0.8;
+}
+
+.product-details-buy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  border: none;
+  width: 200px;
+  height: 64px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.product-details-buy a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.product-details-buy:hover {
+  opacity: 0.8;
+}
+
+.other {
+  text-align: center;
+}
+
+.other-product {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 28px 0px;
+}
+
+.product-item {
+  text-align: center;
+  background: #fff;
+  margin: 15px 10px;
+  cursor: pointer;
+}
+
+.product-img {
+  position: relative;
+}
+
+.product-img img {
+  width: 295px;
+  height: 320px;
+  object-fit: cover;
+}
+
+.product-click {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.product-item:hover > .product-img .product-click {
+  opacity: 1;
+}
+
+.product-click-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 40px;
+  margin: 13px 0px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.product-click-view a {
+  text-decoration: none;
+  color: #000;
+}
+
+.product-details .product-click-add input[type="submit"] {
+  width: 200px;
+  height: 64px;
+  margin: 13px 0px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #000;
+}
+
+.product-text {
+  margin-top: 12px;
+  color: rgb(119, 119, 119);
+}
+
+.product-text:hover {
+  color: #000;
+}
+
+.product-price {
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.comment input {
+  width: 100%;
+}
+
+.comment input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  width: 200px;
+  height: 35px;
+  margin-top: 15px;
+}
+
+.submit-comment {
+  margin: 0px 17px;
+}
+
+@media screen and (max-width: 1300px) {
+  .wrapper {
+    display: block;
+    width: 975px;
+    margin: auto;
+  }
+
+  .intro-inner {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .intro-item {
+    margin: 15px 0px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .wrapper {
+    max-width: 670px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    max-width: 330px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wrapper {
+    max-width: 220px;
+    margin: auto;
+  }
+
+  .product-img img {
+    width: 180px;
+    height: 300px;
+    object-fit: cover;
+  }
+}

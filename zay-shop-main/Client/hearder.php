@@ -1,53 +1,61 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
-                Zay
+<header class="header">
+    <div class="menu-icon">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="logo">
+    <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
+                ZAY SHOP
             </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./view/about.php">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./view/contact.php">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="./view/dangky.php">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
-                </div>
-            </div>
-
+    </div>
+    <div class="menu">
+        <li><a href="index.php">Trang chủ</a></li>
+        <li><a href="index.php?act=tatcasp">Sản phẩm</a></li>
+        <li><a href="index.php?act=vewebsite">Liên hệ</a></li>
+        <li><a href="index.php?act=vewebsite">Về website</a></li>
+    </div>
+    <div class="menu-res">
+        <i class="fa-regular fa-circle-xmark"></i>
+        <div class="menu-res-inner">
+            <li><a href="index.php">Trang chủ</a></li>
+            <li><a href="">Shop</a></li>
+            <li><a href="">Sản phẩm</a></li>
+            <li><a href="">Liên hệ</a></li>
+            <li><a href="index.php?act=vewebsite">Về website</a></li>
         </div>
-    </nav>
+    </div>
+    <div class="form">
+        <form action="index.php?act=timkiem" method="post" class="header-icon">
+            <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+            <div class="form-search">
+                <input type="text" placeholder="Tìm kiếm sản phẩm" name="kyw" />
+                <button type="submit" name="timkiem"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </form>
+        <div class="header-icon">
+            <i class="fa-regular fa-user" id="user-icon"></i>
+            <div class="user-dropdown">
+            <?php if(isset($_SESSION["user"])){
+                    extract($_SESSION['user']);
+                    echo "<p>$username</p>
+                    <li><a href='../user/index.php'><i class='fa-solid fa-user'></i><span>Hồ sơ</span></spa></a></li>
+                    <form action='' method='post'>
+                    <button type='submit' name='dangxuat' style='background: none; border: none;'><i class='fa-solid fa-arrow-right-to-bracket'></i><span>đăng xuất</span></button>
+                </form>";
+                } else {
+                    echo " <li><a href='index.php?act=dangnhap'><i class='fa-solid fa-arrow-right-to-bracket'></i> <span>Đăng
+                    nhập</span></a></li>
+                <li><a href='index.php?act=dangky'><i class='fa-solid fa-user-plus'></i><span>Đăng ký</span></a></li>
+                    ";
+                }?>
+            </div>
+        </div>
+        
+        <div class="header-icon">
+            <a href="index.php?act=giohang" class="bag-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+        </div>
+    </div>
+    </div>
+</header>
+<div class="overlay"></div>
