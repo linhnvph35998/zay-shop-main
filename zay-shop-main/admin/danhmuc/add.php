@@ -6,10 +6,6 @@
         <div class="form-content">
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="row-input">
-                    <label>Mã danh mục </label> <br>
-                    <input type="text" name="id">
-                </div>
-                <div class="row-input">
                     <label>Tên danh mục </label> <br>
                     <input type="text" name="name">
                 </div>

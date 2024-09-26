@@ -18,6 +18,7 @@ include "../model/sanpham.php";
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
     switch ($act) {
+        // Danh mục
         case "adddm";
             if (isset($_POST['them']) && $_POST['them']) {
                 $id = $_POST['id'];
@@ -49,11 +50,11 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             if (isset($_POST['sua']) && $_POST['sua']) {
                 $id = $_POST['id'];
                 $name = $_POST['name'];
-                editDm($id, $name);
+                editDm($id,$name);
             }
             include "./danhmuc/edit.php";
             break;
-
+        // Sản phẩm
         case "tatcasp";
         $listsanpham = loadAllSp();
         include "./view/tatcasanpham.php";
@@ -69,7 +70,30 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         $listdanhmuc = loadAllDm();
         $listsanpham = loadAllSpFilter($kym,$iddm);
         include "./sanpham/list.php";
-        break;
+        break;  
+
+        case "editsp":
+            if(isset($_GET['id'])&&$_GET['id']>0){
+                $sanpham = loadOneSp($_GET['id']);
+            }
+            if(isset($_POST['sua']) && $_POST['sua']){
+                $id = $_POST['id']; 
+                $name = $_POST['name'];
+                $giatien = $_POST['giatien'];
+                $mota = $_POST['mota'];
+                $iddm = $_POST['iddm'];
+                $soluong = $_POST['soluong'];
+                $luotxem = $_POST['luotxem'];
+                $soluong = $_POST['soluong'];
+                $target = "../Img/";
+                $img = $_FILES["img"]["name"];
+                $target_file = $target.$img;
+                move_uploaded_file($_FILES["img"]["tmp_name"],$target_file);
+                editSp($id,$name,$giatien,$img,$mota,$iddm,$luotxem,$soluong);
+            }
+            $listdanhmuc = loadAllDm();
+            include "sanpham/edit.php";
+            break;
 
         case "addsp";
         if(isset($_POST['them'])&& ($_POST['them'])){

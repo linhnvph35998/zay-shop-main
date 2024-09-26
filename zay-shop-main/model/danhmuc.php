@@ -1,4 +1,9 @@
 <?php
+function loadAllDm(){
+    $sql = "SELECT * FROM danhmuc";
+    $listdanhmuc = pdo_query($sql);
+    return $listdanhmuc;
+}
 function loadOneDm($id){
     $sql = "SELECT * FROM danhmuc WHERE id = $id";
     $danhmuc = pdo_query_one($sql);
@@ -32,10 +37,4 @@ function loadDm($iddm){
         return "";
     }
 }
-function loadAllDm(){
-    $sql = "SELECT * FROM danhmuc";
-    $listdanhmuc = pdo_query($sql);
-    return $listdanhmuc;
-}
-
 ?>

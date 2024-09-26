@@ -36,7 +36,7 @@
             echo'<tr>
                 <td>'.$id.'</td>
                 <td>'.$name.'</td>
-                <td>'.$giatien.'d</td>
+                <td>'.$giatien.'đ</td>
                 <td><img src="../img/'.$img.'" alt=""></td>
                 <td>'.$mota.'</td>
                 <td class="edit-delete">
