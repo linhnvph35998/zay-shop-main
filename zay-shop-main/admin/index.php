@@ -53,6 +53,53 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             include "./danhmuc/edit.php";
             break;
+
+        case "tatcasp";
+        $listsanpham = loadAllSp();
+        include "./view/tatcasanpham.php";
+        break;  
+        case "listsp";
+        if(isset($_POST['listok'])&&($_POST['listok'])){
+            $kym = $_POST['kym'];
+            $iddm = $_POST['iddm'];
+        }else{
+            $kym = "";
+            $iddm = 0;
+        }  
+        $listdanhmuc = loadAllDm();
+        $listsanpham = loadAllSpFilter($kym,$iddm);
+        include "./sanpham/list.php";
+        break;
+
+        case "addsp";
+        if(isset($_POST['them'])&& ($_POST['them'])){
+            $id = $_POST['id'];
+                $name = $_POST['name'];
+                $giatien = $_POST['giatien'];
+                $mota = $_POST['mota'];
+                $iddm = $_POST['iddm'];
+                $luotxem = $_POST['luotxem'];
+                $soluong = $_POST['soluong'];
+                $ngaytao = date('h:i:sa d/m/Y');
+                $target = "../Img/";
+                $img = $_FILES["img"]["name"];
+                $target_file = $target.basename($_FILES["img"]["name"]);
+                move_uploaded_file($_FILES["img"]["tmp_name"],$target_file);
+                addSp($name,$giatien,$img,$mota,$iddm,$luotxem,$ngaytao,$soluong);
+        }
+        $listdanhmuc = loadAllDm();
+        $listsanpham = loadAllSp("",0);
+        include "sanpham/add.php";
+        break;
+
+        case "deletesp";
+        if(isset($_GET['id'])&&($_GET['id']>0)){
+            deleteSp($_GET['id']);
+        }
+        $listsanpham = loadAllSp("",0);
+        include "sanpham/list.php";
+        break;
+
         default:
             $tongdm = tinhtongdm();
             $tongsp = tinhtong();
