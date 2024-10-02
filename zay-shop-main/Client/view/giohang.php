@@ -13,11 +13,6 @@
             <div class="total-buy">
                 <a href="index.php?act=dathang">Đồng ý đặt hàng</a>
             </div>
-            <div>
-                <h1>Đặt hàng thành công</h1>
-                <a href="#">dsfjskldfjlsd</a>
-                <div>clkdfjdjfdsl</div>
-            </div>
         </div>
     </div>
 </div>
