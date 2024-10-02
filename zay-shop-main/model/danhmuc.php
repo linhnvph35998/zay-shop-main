@@ -30,7 +30,7 @@ function deleteDm($id){
 function loadDm($iddm){
     if($iddm > 0){
         $sql = "SELECT * FROM danhmuc WHERE id='$iddm'";
-        $sp = pdo_query_one($sql);
+        $dm = pdo_query_one($sql);
         extract($dm);
         return $sp;
     } else {

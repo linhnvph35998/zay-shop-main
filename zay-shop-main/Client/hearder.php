@@ -39,7 +39,8 @@
                     echo "<p>$username</p>
                     <li><a href='../user/index.php'><i class='fa-solid fa-user'></i><span>Hồ sơ</span></spa></a></li>
                     <form action='#' method='post'>
-                    <button type='submit' name='dangxuat' style='background: none; border: none;'><i class='fa-solid fa-arrow-right-to-bracket'></i><span>đăng xuất</span></button>
+                    <li><a href='index.php?act=dangxuat'><i class='fa-solid fa-arrow-right-to-bracket'></i> <span>Đăng
+                    xuất</span></a></li>
                 </form>";
                 } else {
                     echo " <li><a href='index.php?act=dangnhap'><i class='fa-solid fa-arrow-right-to-bracket'></i> <span>Đăng
