@@ -43,10 +43,26 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case "dangky":
             include "./dangky.php";
             break;
-            case 'dangxuat':
+        case 'dangxuat':
                 session_unset();
                 header('location:index.php', true);
                 break;
+        case 'sanphamct':
+
+                   
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        // update_view($_GET['idsp']);
+                        $chitiet_sp = loadOneSp($_GET['id']);
+                        // $sp_cungloai = load_sp_cungloai($_GET['id'], $chitiet_sp['dm_id']);
+                        // $cmt = load_cmt_sp($_GET['idsp']);
+                    }
+                    include "./view/chitietsanpham.php";
+                    break;
+        case 'giohang':
+            include "./view/giohang.php";
+            break;
+        
+            
         default:
             $listdanhmuc = loadAllDm();
             $listsanpham = loadAllSp();
@@ -67,10 +83,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
     $spkhac = spKhac();
     $listdanhmuc = loadAllDm();
     $listsanpham = loadAllSp($kym, $iddm);
-    
+    include "home.php";
 }
-
-include "home.php";
 
 
 include "footer.php";

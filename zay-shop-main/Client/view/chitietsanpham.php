@@ -2,12 +2,12 @@
     <h1 style="text-align: center;">Chi tiết sản phẩm</h1>
     <div class="container">
         <div class="product-detail-img">
-            <img src="../Img/<?=$img?>" alt="1">
+            <img src="../img/<?= $chitiet_sp['img'] ?>" alt="1">
         </div>
         <div class="product-details">
-            <h1><?=$name?></h1>
-            <h2><?=$giatien?>đ</h2>
-            <p>Mô tả: <?=$mota?></p>
+            <h1><?= $chitiet_sp['name'] ?></h1>
+            <h2><?= $chitiet_sp['giatien'] ?>đ</h2>
+            <p>Mô tả: <?= $chitiet_sp['mota'] ?></p>
             <form action="index.php?act=giohang" method="post" class="product-click-add">
                 <h3>Số lượng:
                     <div class="quantity">
