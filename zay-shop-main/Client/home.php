@@ -38,14 +38,17 @@
     <h1 style="text-align: center; margin: 25px 0px;">Danh mục</h1>
     <div class="swiper mySwipers" style="--swiper-navigation-color: #fff; height: 300px;">
         <div class="swiper-wrapper">
-            <div class="swiper-slide content-tab">
+            <?php foreach($listdanhmuc as $danhmuc) {
+                extract($danhmuc);
+                echo '<div class="swiper-slide content-tab">
                 <div class="content-tab-img" style="height: 300px;">
-                    <img src="../Img/'.$img.'" alt="" style="height: 300px;"/>
+                    <img src="../img/'.$img.'" alt="" style="height: 300px;"/>
                     <div class="content-tab-a">
-                        <a href="index.php?act=timkiemdm&iddm='.$id.'">Chi tiết danh mục</a>
+                        <a href="index.php?act=timkiemdm&iddm='.$id.'">'.$name.'</a>
                     </div>
                 </div>
-            </div>
+            </div>';
+            } ?>
         </div>
         <div class="swiper-button-prev swiper-btn swiper-btn-prev">
         </div>
@@ -58,28 +61,32 @@
     <h1 style="text-align: center;">Sản phẩm bán chạy</h1>
     <div class="inner-content">
         <div class="product">
-            <div class="product-item">
+            <?php foreach($topsp as $sanpham) {
+                extract($sanpham);
+                $detail = "index.php?act=sanphamct&id=".$id;
+                 echo '<div class="product-item">
                      <div class="product-img">
-                     <a href="">
-                          <img src="" alt="">
+                     <a href="'.$detail.'">
+                          <img src="../Img/'.$img.'" alt="">
                        </a>
                          <div class="product-click">
                              <a href="'.$detail.'" class="product-click-view">
                                  Xem chi tiết
                              </a>
-                             <form  action="index.php?act=giohang" method="post" class="product-click-add">
-                             <input type="hidden" name="id" value="id"/>    
-                             <input type="hidden" name="name" value="name"/>
-                             <input type="hidden" name="img" value="image"/>
-                             <input type="hidden" name="giatien" value="price"/>
+                             <form onsubmit="addToCart()" action="index.php?act=giohang" method="post" class="product-click-add">
+                             <input type="hidden" name="id" value="'.$id.'"/>    
+                             <input type="hidden" name="name" value="'.$name.'"/>
+                             <input type="hidden" name="img" value="'.$img.'"/>
+                             <input type="hidden" name="giatien" value="'.$giatien.'"/>
                              <input type="hidden" name="soluong" value="1"/>
                              <input type="submit" name="addtocart" value="Thêm vào giỏ hàng"/>
                              </form>
                          </div>
                      </div>
-                     <div class="product-text"></div>
-                     <div class="product-price"></div>
-                 </div>;
+                     <div class="product-text">'.$name.'</div>
+                     <div class="product-price">'.$giatien.'đ</div>
+                 </div>';
+            } ?>
         </div>
     </div>
 </div>
@@ -96,7 +103,10 @@
         <h1>Sản phẩm mới</h1>
     </div>
     <div class="other-product">
-        <div class="product-item">
+        <?php foreach($spkhac as $sanpham) {
+       extract($sanpham);
+       $detail = "index.php?act=sanphamct&id=".$id;
+        echo '<div class="product-item">
         <div class="product-img">
                 <img src="../Img/'.$img.'" alt="">
                 <div class="product-click">
@@ -104,18 +114,19 @@
                         Xem chi tiết
                     </a>
                     <form action="index.php?act=giohang" method="post" class="product-click-add">
-                    <input type="hidden" name="id" value=""/>    
-                    <input type="hidden" name="name" value=""/>
-                    <input type="hidden" name="img" value=""/>
-                    <input type="hidden" name="giatien" value=""/>
+                    <input type="hidden" name="id" value="'.$id.'"/>    
+                    <input type="hidden" name="name" value="'.$name.'"/>
+                    <input type="hidden" name="img" value="'.$img.'"/>
+                    <input type="hidden" name="giatien" value="'.$giatien.'"/>
                     <input type="hidden" name="soluong" value="1"/>
                     <input type="submit" name="addtocart" value="Thêm vào giỏ hàng"/>
                     </form>
                 </div>
             </div>
-            <div class="product-text"></div>
-            <div class="product-price"></div>
-        </div>
+            <div class="product-text">'.$name.'</div>
+            <div class="product-price">'.$giatien.'đ</div>
+        </div>';
+       } ?>
     </div>
 </div>
 <div class="bg-gray" style="background-color: #f5f5f5; height: 150px; margin: 80px 0px;">

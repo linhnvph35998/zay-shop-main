@@ -14,20 +14,18 @@
 
 <?php
 session_start();
-include "./model/pdo.php";
-include "./model/taikhoan.php";
-include "./model/sanpham.php";
-include "./model/danhmuc.php";
-include "./model/giohang.php";
-include "./model/donhang.php";
-if(!isset($_SESSION['mycart'])) {
+include "../model/pdo.php";
+include "../model/taikhoan.php";
+include "../model/sanpham.php";
+include "../model/danhmuc.php";
+if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
 }
 
 
-if(isset($_SESSION["user"])){
+if (isset($_SESSION["user"])) {
     extract($_SESSION['user']);
-    if($trangthai === 1){
+    if ($trangthai === 1) {
         echo "Bạn đã bị khóa tài khoản vui lòng liên hệ admin để khôi phục lại tài khoản của bạn";
         echo "<form action='' method='post'>
         <input type='submit' name='dangxuat' value='Quay lại trang chủ và đăng xuất'/>
@@ -36,9 +34,38 @@ if(isset($_SESSION["user"])){
     }
 }
 include "./hearder.php";
-
-
+if (isset($_GET['act']) && $_GET['act'] != "") {
+    $act = $_GET['act'];
+    switch ($act) {
+        case "dangnhap":
+            include "./dangnhap.php";
+            break;
+        case "dangky":
+            include "./dangky.php";
+            break;
+        default:
+            $listsanpham = loadAllSp();
+            $topsp = topSp();
+            $spkhac = spKhac();
+            include "./home.php";
+            break;
+    }
+} else {
+    if (isset($_POST['listok']) && ($_POST['listok'])) {
+        $kym = $_POST['kym'];
+        $iddm = $_POST['iddm'];
+    } else {
+        $kym = "";
+        $iddm = 0;
+    };
+    $topsp = topSp();
+    $spkhac = spKhac();
+    $listdanhmuc = loadAllDm();
+    $listsanpham = loadAllSp($kym, $iddm);
     include "home.php";
+}
+
+include "home.php";
 
 
 include "footer.php";
