@@ -43,11 +43,16 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case "dangky":
             include "./dangky.php";
             break;
+            case 'dangxuat':
+                session_unset();
+                header('location:index.php', true);
+                break;
         default:
+            $listdanhmuc = loadAllDm();
             $listsanpham = loadAllSp();
             $topsp = topSp();
             $spkhac = spKhac();
-            include "./home.php";
+            
             break;
     }
 } else {
@@ -62,7 +67,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
     $spkhac = spKhac();
     $listdanhmuc = loadAllDm();
     $listsanpham = loadAllSp($kym, $iddm);
-    include "home.php";
+    
 }
 
 include "home.php";
