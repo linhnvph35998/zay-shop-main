@@ -1,4 +1,5 @@
 <?php
+
 function loadAllSpFilter($kym,$iddm){
     $sql = "SELECT * FROM sanpham where 1";
     if($kym != ""){
