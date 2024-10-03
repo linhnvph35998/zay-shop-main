@@ -88,48 +88,53 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         include "./view/tatcasp.php";
         break;   
         
-        case "giohang";
-        if(isset($_POST['addToCart'])&& $_POST['addToCart']){
-            $id = $_POST['id'];
-            $name = $_POST['name'];
-            $img = $_POST['img'];
-            $giatien = $_POST['giatien'];
-            $soluong = $_POST['soluong'];
-            $tien = $soluong * $giatien;
-            $giohang = [$id,$name,$img,$giatien,$soluong,];
-            if(isset($_SESSION['mycart'])){
-                $cartItems = $_SESSION['mycart'];
-                $existingItemkey = null;
-                foreach ($cartItems as $key => $item){
-                    if($item[0] == $id){
-                        $existingItemkey = $key;
-                        break;
+        case "giohang":
+            if(isset($_POST['addtocart']) && $_POST['addtocart']){
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $img = $_POST['img'];
+                $giatien = $_POST['giatien'];
+                $soluong = $_POST['soluong'];
+                $tien = $soluong * $giatien;
+                $giohang = [$id,$name,$img,$giatien,$tien,$soluong];
+                if (isset($_SESSION['mycart'])) {
+                    $cartItems = $_SESSION['mycart'];
+                    $existingItemKey = null;
+                    foreach ($cartItems as $key => $item) {
+                        if ($item[0] == $id) {
+                            $existingItemKey = $key;
+                            break;
+                        }
                     }
-                }
+                }  
+                if ($existingItemKey !== null) {
+                    $cartItems[$existingItemKey][4] += $tien; 
+                    $cartItems[$existingItemKey][5] += $soluong; 
+                } else {
+                    array_push($cartItems, $giohang);
+                }  
+                $_SESSION['mycart'] = $cartItems;
             }
-            if($existingItemkey !== null){
-                $cartItems[$existingItemkey][4] += $tien;
-                $cartItems[$existingItemkey][5] += $soluong;
-            }else{
-                array_push($cartItems,$giohang);
-            }
-            $_SESSION['mycart'] = $cartItems;
-            }
-            if(isset($_POST['tangsoluong'])&& $_POST['tangsoluong']){
+            if(isset($_POST['tangsoluong']) && $_POST['tangsoluong']) {
                 $id = $_POST['id'];
                 $cartItems = $_SESSION['mycart'];
-                foreach ($cartItems as $key => $item){
-                    if($item[0]==$id){
-                        //Tăng số lượng và giá tiền của sản phẩm
-                        $cartItems[$key][5]++;
+                
+                // Tìm kiếm sản phẩm trong giỏ hàng
+                foreach ($cartItems as $key => $item) {
+                    if ($item[0] == $id) {
+                        // Tăng số lượng và giá tiền của sản phẩm
+                        $cartItems[$key][5]++; 
                         $cartItems[$key][4] += $item[3];
                         break;
                     }
                 }
-                //Lưu giỏ hàng vào sesion
-                $_SESSION['mycart']=$cartItems;
+                
+                // Lưu giỏ hàng vào session
+                $_SESSION['mycart'] = $cartItems;
             }
-            include "./view/giohang.php";
+            
+            
+            include "view/giohang.php";
             break;
 
         default:
