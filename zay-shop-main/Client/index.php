@@ -18,21 +18,22 @@ include "../model/pdo.php";
 include "../model/taikhoan.php";
 include "../model/sanpham.php";
 include "../model/danhmuc.php";
+include "../model/giohang.php";
 if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
 }
 
 
-if (isset($_SESSION["user"])) {
-    extract($_SESSION['user']);
-    if ($trangthai === 1) {
-        echo "Bạn đã bị khóa tài khoản vui lòng liên hệ admin để khôi phục lại tài khoản của bạn";
-        echo "<form action='' method='post'>
-        <input type='submit' name='dangxuat' value='Quay lại trang chủ và đăng xuất'/>
-        </form>";
-        die;
-    }
-}
+// if (isset($_SESSION["user"])) {
+//     extract($_SESSION['user']);
+//     if ($trangthai === 1) {
+//         echo "Bạn đã bị khóa tài khoản vui lòng liên hệ admin để khôi phục lại tài khoản của bạn";
+//         echo "<form action='' method='post'>
+//         <input type='submit' name='dangxuat' value='Quay lại trang chủ và đăng xuất'/>
+//         </form>";
+//         die;
+//     }
+// }
 include "./hearder.php";
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
@@ -43,16 +44,100 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case "dangky":
             include "./dangky.php";
             break;
-            case 'dangxuat':
-                session_unset();
-                header('location:index.php', true);
-                break;
+        case 'dangxuat':
+            session_unset();
+            header('location:index.php', true);
+            break;
+        
+        case "sanphamct";
+        if(isset($_POST['addToCart'])&& $_POST['addToCart']){
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $img = $_POST['img'];
+            $giatien = $_POST['giatien'];
+            $soluong = $_POST['soluong'];
+            $tien = $soluong * $giatien;
+            $giohang = [$id,$name,$img,$giatien,$soluong,];
+            if(isset($_SESSION['mycart'])){
+                $cartItems = $_SESSION['mycart'];
+                $existingItemkey = null;
+                foreach ($cartItems as $key => $item){
+                    if($item[0] == $id){
+                        $existingItemkey = $key;
+                        break;
+                    }
+                }
+            }
+            if($existingItemkey !== null){
+                $cartItems[$existingItemkey][4] += $tien;
+                $cartItems[$existingItemkey][5] += $soluong;
+            }else{
+                array_push($cartItems,$giohang);
+            }
+            $_SESSION['mycart'] = $cartItems;
+        }    if(isset($_GET['id'])&&$_GET['id']>0){
+            $sanpham = loadOneSp($_GET['id']);
+        }
+        include "./view/chitietsanpham.php";
+        break;
+        case "vewebsite":
+            include "./view/vewebsite.php";
+            break;
+        case "tatcasp";
+        $listsanpham = loadAllSp();
+        include "./view/tatcasp.php";
+        break;   
+        
+        case "giohang";
+        if(isset($_POST['addToCart'])&& $_POST['addToCart']){
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $img = $_POST['img'];
+            $giatien = $_POST['giatien'];
+            $soluong = $_POST['soluong'];
+            $tien = $soluong * $giatien;
+            $giohang = [$id,$name,$img,$giatien,$soluong,];
+            if(isset($_SESSION['mycart'])){
+                $cartItems = $_SESSION['mycart'];
+                $existingItemkey = null;
+                foreach ($cartItems as $key => $item){
+                    if($item[0] == $id){
+                        $existingItemkey = $key;
+                        break;
+                    }
+                }
+            }
+            if($existingItemkey !== null){
+                $cartItems[$existingItemkey][4] += $tien;
+                $cartItems[$existingItemkey][5] += $soluong;
+            }else{
+                array_push($cartItems,$giohang);
+            }
+            $_SESSION['mycart'] = $cartItems;
+            }
+            if(isset($_POST['tangsoluong'])&& $_POST['tangsoluong']){
+                $id = $_POST['id'];
+                $cartItems = $_SESSION['mycart'];
+                foreach ($cartItems as $key => $item){
+                    if($item[0]==$id){
+                        //Tăng số lượng và giá tiền của sản phẩm
+                        $cartItems[$key][5]++;
+                        $cartItems[$key][4] += $item[3];
+                        break;
+                    }
+                }
+                //Lưu giỏ hàng vào sesion
+                $_SESSION['mycart']=$cartItems;
+            }
+            include "./view/giohang.php";
+            break;
+
         default:
             $listdanhmuc = loadAllDm();
             $listsanpham = loadAllSp();
             $topsp = topSp();
             $spkhac = spKhac();
-            
+
             break;
     }
 } else {
@@ -67,10 +152,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
     $spkhac = spKhac();
     $listdanhmuc = loadAllDm();
     $listsanpham = loadAllSp($kym, $iddm);
-    
+    include "home.php";
 }
 
-include "home.php";
 
 
 include "footer.php";

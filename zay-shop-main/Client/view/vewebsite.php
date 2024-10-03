@@ -74,15 +74,15 @@
         <section>
             <h2 class="section-title">Team của chúng tôi</h2>
             <div class="team-member">
-                <h3>Nguyễn Trạch Tiến</h3>
+                <h3>Nguyễn Hoàng Thạch</h3>
                 <p>Software Engineer</p>
             </div>
             <div class="team-member">
-                <h3>Lê Tuấn Vũ</h3>
+                <h3>Nguyễn Văn Linh</h3>
                 <p>Customer Support</p>
             </div>
             <div class="team-member">
-                <h3>Thiều Quang Hiếu</h3>
+                <h3>Lê Hữu Hùng</h3>
                 <p>Customer Support</p>
             </div>
         </section>

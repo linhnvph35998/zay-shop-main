@@ -1,3 +1,9 @@
+<?php
+if(is_array($sanpham)){
+    extract($sanpham);
+}
+?>
+
 <div class="wrapper">
     <h1 style="text-align: center;">Chi tiết sản phẩm</h1>
     <div class="container">
@@ -20,7 +26,7 @@
                 <input type="hidden" name="name" value="<?=$name?>" />
                 <input type="hidden" name="img" value="<?=$img?>" />
                 <input type="hidden" name="giatien" value="<?=$giatien?>" />
-                <input type="submit" name="addtocart" value="Thêm vào giỏ hàng"  />
+                <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" onclick="ThemGioHang()" />
             </form>
             <div class="product-details-buy">
                 <a href="index.php?act=dathang">Mua hàng</a>
@@ -28,7 +34,7 @@
         </div>
     </div>
     <iframe src="./view/binhluanform.php?idpro=<?=$id?>" width="100%" height="300px" frameborder="0"></iframe>
-    <div class="other">
+    <!-- <div class="other">
         <h1>Sản phẩm khác</h1>
     </div>
     <div class="other-product">
@@ -44,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-text">Giày adidas đen</div>
+            <div class="product-text">Áo adidas đen</div>
             <div class="product-price">300.000đ</div>
         </div>
         <div class="product-item">
@@ -59,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-text">Giày dài màu ghi</div>
+            <div class="product-text">Quần dài màu ghi</div>
             <div class="product-price">200.000đ</div>
         </div>
         <div class="product-item">
@@ -89,8 +95,13 @@
                     </div>
                 </div>
             </div>
-            <div class="product-text">Giày adidas xanh</div>
+            <div class="product-text">Áo adidas xanh</div>
             <div class="product-price">300.000đ</div>
         </div>
-    </div>
+    </div> -->
 </div>
+<script>
+function ThemGioHang() {
+    alert("Thêm giỏ hàng thành công")
+}
+</script>
