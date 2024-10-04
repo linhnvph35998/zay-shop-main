@@ -168,6 +168,35 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             case "vewebsite":
                 include "view/vewebsite.php";
                 break;
+            
+            case "dathang":
+                if(isset($_POST['dongydathang']) && $_POST['dongydathang']){
+                    if (isset($_SESSION['user']) && $_SESSION['user'] != "") {
+                        $idkhachhang = $_SESSION['user']['id'];
+                    } else {
+                        $idkhachhang = "";
+                    }
+                    $khachhang = $_POST['khachhang'];
+                    $diachi = $_POST['diachi'];
+                    $email = $_POST['email'];
+                    $sdt = $_POST['sdt'];
+                    $ghichu = $_POST['ghichu'];
+                    $phuongthucthanhtoan = $_POST['phuongthucthanhtoan'];
+                    $tongtien = 0;
+                    foreach($_SESSION['mycart'] as $cart){
+                        $tongtien += $cart[4];
+                    }
+                    $idbill = insertDonHang($idkhachhang,$khachhang,$diachi,$email,$sdt,$ghichu,$phuongthucthanhtoan,$tongtien);
+                    foreach($_SESSION['mycart'] as $cart){
+                        insert_cart($cart[5],$cart[3],$cart[4],$cart[0],$idbill);
+                    }
+                    $_SESSION['mycart'] = [];
+                    
+                }
+                
+                
+                include "view/dathang.php";
+                break;
 
         default:
             $listdanhmuc = loadAllDm();

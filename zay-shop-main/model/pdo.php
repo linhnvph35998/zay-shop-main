@@ -18,6 +18,23 @@ function pdo_get_connection(){
  * @param array $args mảng giá trị cung cấp cho các tham số của $sql
  * @throws PDOException lỗi thực thi câu lệnh
  */
+function pdo_execute_return_lastIsertID($sql){
+    $sql_args=array_slice(func_get_args(),1);
+    try{
+        $conn=pdo_get_connection();
+        $stmt=$conn->prepare($sql);
+        $stmt->execute($sql_args);
+
+        return $conn->lastInsertId();
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}
+
 function pdo_execute($sql){
     $sql_args=array_slice(func_get_args(),1);
     try{

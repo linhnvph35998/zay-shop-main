@@ -42,7 +42,7 @@
                 <div class="product-bill-item-list">
                     <div class="product-bill-media">
                    <div class="product-bill-media-text">
-                       <div class="product-bill-media-text-img"><img src="'.$image.'" alt="">
+                       <div class="product-bill-media-text-img"><img src="../img/<?=$img?>" alt="">
                            <p><span></span></p>
                        </div>
                        <b></b>
@@ -52,9 +52,17 @@
                 <div class="product-bill-item-total">
                     <div class="product-bill-item-total-name">
                         <p>Thành tiền </p>
+                        
                     </div>
                     <div class="product-bill-item-total-name">
-                        <b>đ</b>
+                    <?php 
+                $tong = 0;
+                foreach ($_SESSION['mycart'] as $cart) { 
+                $tong += $cart[4];
+                }
+                echo '
+                <p>'.$tong.'đ</p>';
+                 ?>
                     </div>
                 </div>
             </div>
