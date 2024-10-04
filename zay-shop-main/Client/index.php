@@ -19,6 +19,7 @@ include "../model/taikhoan.php";
 include "../model/sanpham.php";
 include "../model/danhmuc.php";
 include "../model/giohang.php";
+include "../model/donhang.php";
 if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
 }
@@ -182,11 +183,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     $sdt = $_POST['sdt'];
                     $ghichu = $_POST['ghichu'];
                     $phuongthucthanhtoan = $_POST['phuongthucthanhtoan'];
-                    $tongtien = 0;
-                    foreach($_SESSION['mycart'] as $cart){
-                        $tongtien += $cart[4];
-                    }
-                    $idbill = insertDonHang($idkhachhang,$khachhang,$diachi,$email,$sdt,$ghichu,$phuongthucthanhtoan,$tongtien);
+                    
+                
+                    $idbill = insertDonHang($idkhachhang,$khachhang,$diachi,$email,$sdt,$ghichu,$phuongthucthanhtoan);
                     foreach($_SESSION['mycart'] as $cart){
                         insert_cart($cart[5],$cart[3],$cart[4],$cart[0],$idbill);
                     }

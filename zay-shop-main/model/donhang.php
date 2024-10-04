@@ -1,8 +1,9 @@
 <?php
-function insertDonHang($idkhachhang,$khachhang,$diachi,$email,$sdt,$ghichu,$phuongthucthanhtoan,$tongtien) {
-    $sql = "INSERT INTO donhang (idkhachhang,khachhang,diachi,email,sdt,ghichu,phuongthucthanhtoan,tongtien) VALUES ('$idkhachhang','$khachhang','$diachi
-    ' ,'$email','$sdt','$ghichu','$phuongthucthanhtoan','$tongtien')";
-    return pdo_execute_return_lastIsertID($sql);
+function insertDonHang($idkhachhang,$khachhang,$diachi,$email,$sdt,$ghichu,$phuongthucthanhtoan) {
+    $sql = "INSERT INTO donhang (idkhachhang,khachhang,diachi,email,sdt,ghichu,phuongthucthanhtoan) VALUES ('$idkhachhang','$khachhang','$diachi
+    ' ,'$email','$sdt','$ghichu','$phuongthucthanhtoan',)";
+    pdo_execute($sql);
+    
 }
 
 function  insert_cart($soluong, $dongia, $thanhtien, $idsp, $idhd)
