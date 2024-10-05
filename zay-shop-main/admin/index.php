@@ -15,6 +15,8 @@ include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "./tinhtong.php";
 include "../model/sanpham.php";
+include "../model/khachhang.php";
+include "../model/vaitro.php";
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
     switch ($act) {
@@ -124,6 +126,27 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         include "sanpham/list.php";
         break;
 
+        //Tài khoản
+        case "listtk";
+        $listtk = loadAllTk();
+        include "./taikhoan/list.php";
+        break;
+
+        case "edittk";
+        if(isset($_GET['id']) && ($_GET['id']>0)){
+            $taikhoan = loadOneTk($_GET['id']);
+        }
+        if(isset($_POST['sua'])&& $_POST['sua']){
+            $id = $_POST['id'];
+            $email = $_POST['email'];
+            $diachi = $_POST['diachi'];
+            $sdt = $_POST['sdt'];
+            $idvaitro = $_POST['idvaitro'];
+            editTk($id,$diachi,$email,$vaitro,$sdt,$idvaitro);
+        }
+        $vaitro = loadAllVaitro(); 
+        include "./taikhoan/edit.php";
+        break;
         default:
             $tongdm = tinhtongdm();
             $tongsp = tinhtong();

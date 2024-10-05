@@ -2,31 +2,22 @@
 <link rel="stylesheet" href="./CSS/slider.css" />
 
 <div class="swiper mySwiper"
-    style="--swiper-navigation-color: #fff;--swiper-navigation-font-size: 20px;--swiper-pagination-color: #000; height: 800px;">
+    style="--swiper-navigation-color: #fff;--swiper-navigation-font-size: 20px;--swiper-pagination-color: #000; height: 500px;">
     <div class="swiper-wrapper">
-        <div class="swiper-slide swiper-banner">
-            <img src="../Img/leoslideshow/slide-1-1920x800.jpg" alt="">
-            <div class="banner-text">
+        <div class="swiper-slide ">
+            <img src="../Img/leoslideshow/slide1.jpg" alt="">
+            <!-- <div class="banner-text">
                 <h3>Bộ sưu tập Adidas</h3>
                 <p>Tất cả sản phẩm mà bạn thích</p>
                 <a href="index.php?act=tatcasp">Xem thêm</a>
-            </div>
+            </div> -->
         </div>
-        <div class="swiper-slide">
-            <img src="../Img/leoslideshow/slide-2-1920x800.jpg" alt="">
-            <div class="banner-text">
+        <div class="swiper-slide ">
+            <img src="../Img/leoslideshow/slide2.jpg" alt="">
+            <!-- <div class="banner-text">
                 <h3>Thành viên của chúng tôi</h3>
-                <!-- <p></p> -->
                 <a href="index.php?act=vewebsite">Xem thêm</a>
-            </div>
-        </div>
-        <div class="swiper-slide">
-            <img src="../Img/leoslideshow/slide-3-1920x800.jpg" alt="">
-            <div class="banner-text">
-                <h3>Đặt hàng nhanh</h3>
-                <p>Đăng nhập hoặc đăng ký để đặt hàng ngay</p>
-                <a href="index.php?act=dangnhap">Đăng nhập</a>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="swiper-button-prev" style="width: 60px; height: 60px; background-color: rgba(0, 0, 0, 0.2);"></div>
@@ -44,7 +35,7 @@
                 <div class="content-tab-img" style="height: 300px;">
                     <img src="../img/'.$img.'" alt="" style="height: 300px;"/>
                     <div class="content-tab-a">
-                        <a href="index.php?act=timkiemdm&iddm='.$id.'">'.$name.'</a>
+                        
                     </div>
                 </div>
             </div>';
