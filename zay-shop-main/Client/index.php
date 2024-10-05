@@ -19,6 +19,7 @@ include "../model/taikhoan.php";
 include "../model/sanpham.php";
 include "../model/danhmuc.php";
 include "../model/giohang.php";
+include "../model/donhang.php";
 if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
 }
@@ -167,6 +168,33 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 break;
             case "vewebsite":
                 include "view/vewebsite.php";
+                break;
+            
+            case "dathang":
+                if(isset($_POST['dongydathang']) && $_POST['dongydathang']){
+                    if (isset($_SESSION['user']) && $_SESSION['user'] != "") {
+                        $idkhachhang = $_SESSION['user']['id'];
+                    } else {
+                        $idkhachhang = "";
+                    }
+                    $khachhang = $_POST['khachhang'];
+                    $diachi = $_POST['diachi'];
+                    $email = $_POST['email'];
+                    $sdt = $_POST['sdt'];
+                    $ghichu = $_POST['ghichu'];
+                    $phuongthucthanhtoan = $_POST['phuongthucthanhtoan'];
+                    
+                
+                    $idbill = insertDonHang($idkhachhang,$khachhang,$diachi,$email,$sdt,$ghichu,$phuongthucthanhtoan);
+                    foreach($_SESSION['mycart'] as $cart){
+                        insert_cart($cart[5],$cart[3],$cart[4],$cart[0],$idbill);
+                    }
+                    $_SESSION['mycart'] = [];
+                    
+                }
+                
+                
+                include "view/dathang.php";
                 break;
 
         default:
