@@ -1,18 +1,4 @@
 <?php
-function insertDonHang($idkhachhang,$khachhang,$diachi,$email,$sdt,$ghichu,$phuongthucthanhtoan) {
-    $sql = "INSERT INTO donhang (idkhachhang,khachhang,diachi,email,sdt,ghichu,phuongthucthanhtoan) VALUES ('$idkhachhang','$khachhang','$diachi
-    ' ,'$email','$sdt','$ghichu','$phuongthucthanhtoan',)";
-    pdo_execute($sql);
-    
-}
-
-function  insert_cart($soluong, $dongia, $thanhtien, $idsp, $idhd)
-{
-    $sql = "insert into chitiet_dh(so_luong,don_gia,thanh_tien,id_sp,id_hd) values('$soluong','$dongia','$thanhtien','$idsp','$idhd')";
-    pdo_execute($sql);
-}
-
-
 function viewDonHang($donhang){
     $i = 0;
     $tong = 0;
@@ -31,5 +17,63 @@ function viewDonHang($donhang){
     }
     echo "<h3>Tổng tiền: $tong</h3>";
 }
+
+
+function loadAllDonHang(){
+    $sql = "SELECT * FROM donhang";
+    $listdonhang = pdo_query($sql);
+    return $listdonhang;
+}
+
+function loadOneDonHang($id){
+    $sql = "SELECT * FROM donhang WHERE id = $id";
+    $donhang = pdo_query_one($sql);
+    return $donhang;
+}
+
+function loadOneDonHangUser($id){
+    $sql = "SELECT donhang.id, donhang.khachhang, donhang.diachi,
+    donhang.sdt, donhang.email, donhang.thoigiandathang, donhang.phuongthucthanhtoan,
+    donhang.soluong,donhang.trangthai,donhang.ghichu,donhang.idkhachhang,
+    giohang.iddonhang,giohang.iduser,giohang.name,giohang.giatien FROM donhang
+    LEFT JOIN giohang ON giohang.id = donhang.idkhachhang
+    WHERE donhang.idkhachhang = $id";
+    $donhang = pdo_query($sql);
+    return $donhang;
+}
+
+function loadDonHangTrangChu($id){
+    $sql = "SELECT * FROM donhang WHERE id = $id";
+    $donhang = pdo_query_one($sql);
+    return $donhang;
+}
+
+function huyHang($id){
+    $sql = "UPDATE donhang SET trangthai = 1 WHERE id = $id";
+    pdo_execute($sql);
+    header("location: index.php?act=donhang");
+}
+
+function xacNhanHang($id){
+    $sql = "UPDATE donhang SET trangthai = 2 WHERE id = $id";
+    pdo_execute($sql);
+    header("location: index.php?act=donhang");
+}
+
+
+function tongDonHang(){
+    $tong = 0;
+    foreach($_SESSION['cart'] as $cart) {
+        $tien = $cart[3] + $cart[4];
+        $tong += $tien;
+    }
+    return $tong;
+}
+
+function insert_donhang($khachhang,$diachi,$sdt,$email,$thoigiandathang,$phuongthucthanhtoan,$soluong,$ghichu,$idkhachhang){
+    $sql="INSERT INTO donhang VALUES(null,'$khachhang','$diachi','$sdt','$email','$thoigiandathang','$phuongthucthanhtoan','$soluong',0,'$ghichu','$idkhachhang')";
+    return pdo_execute_return_lastInsertId($sql);
+}
+
 
 ?>
