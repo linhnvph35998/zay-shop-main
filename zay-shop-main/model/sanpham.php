@@ -52,4 +52,6 @@ function deleteSp($id){
     $sql = "DELETE FROM sanpham WHERE id ='$id'";
     pdo_execute($sql);    
 }
+
+
 ?>
