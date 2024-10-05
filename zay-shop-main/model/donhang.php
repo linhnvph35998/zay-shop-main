@@ -13,6 +13,23 @@ function  insert_cart($soluong, $dongia, $thanhtien, $idsp, $idhd)
 }
 
 
-
+function viewDonHang($donhang){
+    $i = 0;
+    $tong = 0;
+     foreach ($donhang as $cart) {
+        $tong += $cart['giatien'];
+        $image = '../Img/'.$cart['img'].'';
+        echo '<tr class="p-4">
+        <td class="p-2">'.$i.'</td>
+        <td class="p-2"><img src='.$image.' height="180px"/></td>
+        <td class="p-2">'.$cart['sanpham'].'</td>
+        <td class="p-2">'.$cart['giatien'].'đ</td>
+        <td class="p-2">1</td>
+        </tr>
+        ';
+        $i += 1;
+    }
+    echo "<h3>Tổng tiền: $tong</h3>";
+}
 
 ?>

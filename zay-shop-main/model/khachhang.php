@@ -12,8 +12,8 @@
         return $taikhoan;
     };
 
-    function editTk($email,$diachi,$sdt,$idvaitro,$id){
-        $sql = "UPDATE khachhang set email='$email',diachi='$diachi',sdt='$sdt',vaitro='$idvaitro' WHERE id = $id";
+    function editTk($id,$email,$diachi,$sdt,$idvaitro){
+        $sql = "UPDATE khachhang set email='$email',diachi='$diachi',sdt='$sdt',idvaitro='$idvaitro' WHERE id = $id";
         pdo_execute($sql);
         header("location: index.php?act=listtk");
     }

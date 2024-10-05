@@ -1,3 +1,17 @@
+<?php
+if(isset($_SESSION['user'])){
+    $name = $_SESSION['user']['username'];
+    $diachi = $_SESSION['user']['diachi'];
+    $email = $_SESSION['user']['email'];
+    $sdt = $_SESSION['user']['sdt'];
+} else {
+    $name = "";
+    $diachi = "";
+    $email = "";
+    $sdt = "";
+}
+
+?>
 <div class="pay">
     <div class="pay-form">
         <form action="" method="POST">
@@ -34,27 +48,38 @@
                     </div>
                 </div>
             </div>
-            <input class="confirm-pay" type="submit" name="dongydathang" value="Đặt hàng">
+            <input onclick="return datHang()" class="confirm-pay" type="submit" name="dongydathang" value="Đặt hàng">
         </form>
         <div class="bill">
             <h1>Thông tin giỏ hàng</h1>
             <div class="product-bill-item">
                 <div class="product-bill-item-list">
-                    <div class="product-bill-media">
+                    <?php
+                    foreach ($_SESSION['mycart'] as $cart) {
+                        $image = '../Img/'.$cart[2].'';
+                        echo '<div class="product-bill-media">
                    <div class="product-bill-media-text">
                        <div class="product-bill-media-text-img"><img src="'.$image.'" alt="">
-                           <p><span></span></p>
+                           <p>'.$cart[1].' <span>x'.$cart[5].'</span></p>
                        </div>
-                       <b></b>
+                       <b>'.$cart[4].'đ</b>
                    </div>
-               </div>
+               </div>';
+                    } 
+                   ?>
                 </div>
                 <div class="product-bill-item-total">
                     <div class="product-bill-item-total-name">
                         <p>Thành tiền </p>
                     </div>
                     <div class="product-bill-item-total-name">
-                        <b>đ</b>
+                        <b><?php 
+                        $tong = 0;
+                        foreach ($_SESSION['mycart'] as $cart) { 
+                        $tong += $cart[4];
+                        }
+                        echo $tong;
+                         ?>đ</b>
                     </div>
                 </div>
             </div>
@@ -62,3 +87,12 @@
     </div>
 </div>
 
+<script>
+function datHang() {
+    if (confirm("Bạn có muốn đặt hàng không ?")) {
+        alert("Đặt hàng thành công")
+    } else {
+        return false;
+    }
+}
+</script>
