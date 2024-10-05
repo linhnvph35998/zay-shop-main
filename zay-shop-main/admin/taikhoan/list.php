@@ -1,3 +1,5 @@
+
+
 <body>
     <div class="wrapper">
         <div class="admin">
@@ -33,7 +35,7 @@
                 <td>'.$diachi.'</td>
                 <td>'.$sdt.'</td>
                 <td>'.($trangthai === 0 ? "<p style='color: green;'>Hoạt động</p>" : "<p style='color: red;'>Bị khóa tài khoản</p>").'</td>
-                <td>'.($idvaitro === 1 ? "Admin" : ($idvaitro === 2 ? "Khách hàng" : "Khách hàng")).'</td>
+                <td>'.$idvaitro.'</td>
                 <td class="edit-delete">
                     '.($trangthai === 0 ? "<a href=".$khoataikhoan." onclick='return confirmUpdate()' class='delete'>
                     Khóa tài khoản
@@ -48,6 +50,9 @@
     </div>
 </body>
 <script>
+    function checkRole($idvaitro) {
+    return role === 1 ? "Admin" : "khách hàng";
+}
 function confirmUpdate() {
     if (confirm("Bạn có muốn cập nhật trạng thái không ?")) {
         document.location = "index.php?act=listsp";

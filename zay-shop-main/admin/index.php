@@ -142,7 +142,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             $diachi = $_POST['diachi'];
             $sdt = $_POST['sdt'];
             $idvaitro = $_POST['idvaitro'];
-            editTk($id,$diachi,$email,$vaitro,$sdt,$idvaitro);
+            editTk($id,$email,$diachi,$sdt,$idvaitro);
         }
         $vaitro = loadAllVaitro(); 
         include "./taikhoan/edit.php";
