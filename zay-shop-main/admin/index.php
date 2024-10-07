@@ -17,6 +17,8 @@ include "./tinhtong.php";
 include "../model/sanpham.php";
 include "../model/khachhang.php";
 include "../model/vaitro.php";
+include "../model/donhang.php";
+include "../model/giohang.php";
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
     switch ($act) {
@@ -147,17 +149,61 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         $vaitro = loadAllVaitro(); 
         include "./taikhoan/edit.php";
         break;
-        default:
-            $tongdm = tinhtongdm();
-            $tongsp = tinhtong();
-            $listdanhmuc = loadAllDm();
-            include "./home.php";
+        case "khoatk":
+            if(isset($_GET['id']) && ($_GET['id'] > 0)){
+                khoaTk($_GET['id']);
+            }
+            include "taikhoan/list.php";
             break;
+        case "molaitk":
+            if(isset($_GET['id']) && ($_GET['id'] > 0)){
+                molaiTk($_GET['id']);
+            }
+            include "taikhoan/list.php";
+            break;
+
+        //Đơn hàng
+        case "huydonhang":
+            if(isset($_GET['id']) && ($_GET['id'] > 0)){
+                huyHang($_GET['id']);
+            }
+            include "./taikhoan/list.php";
+            break;
+        case "xacnhandonhang":
+            if(isset($_GET['id']) && ($_GET['id'] > 0)){
+                xacNhanHang($_GET['id']);
+            }
+            include "./donhang/list.php";
+            break;
+        case "donhang":
+            $listdonhang = loadAllDonHang();
+            include "./donhang/list.php";
+            break;
+        case "chitietdonhang":
+            if(isset($_GET['id'])&&$_GET['id']>0){
+                $giohang = loadCart($_GET['id']);
+                $donhang = loadOneDonHang($_GET['id']);
+            }
+            include "./donhang/chitiet.php";
+            break;
+        default:
+        $tongdm = tinhtongdm();
+        $tongsp = tinhtongsp();
+        $tongbl = tinhtongbinhluan();
+        $tongkhachhang = tinhtongkhachhang();
+        $listdanhmuc = loadAllDm();
+        $listsanpham = loadAllSp();
+        include "home.php";
+        break;
     };
 } else {
     $tongdm = tinhtongdm();
-    $tongsp = tinhtong();
-    include "./home.php";
+        $tongsp = tinhtongsp();
+        $tongbl = tinhtongbinhluan();
+        $tongkhachhang = tinhtongkhachhang();
+        $listdanhmuc = loadAllDm();
+        $listsanpham = loadAllSp();
+        include "home.php";
 }
 include "footer.php";
 ?>

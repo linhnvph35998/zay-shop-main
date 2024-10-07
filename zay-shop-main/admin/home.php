@@ -32,7 +32,10 @@
             </div>
             <div class="small-box">
                 <div class="inner">
-                    <h3></h3>
+                    <h3><?php foreach ($tongkhachhang as $khachhang) {
+                extract($khachhang);
+                echo $total;
+           } ?></h3>
                     <p>Người dùng đã đăng ký</p>
                 </div>
                 <div class="icon">
@@ -42,7 +45,10 @@
             </div>
             <div class="small-box">
                 <div class="inner">
-                    <h3></h3>
+                    <h3><?php foreach ($tongbl as $bl) {
+                extract($bl);
+                echo $total;
+                }?></h3>
                     <p>Lượt bình luận</p>
                 </div>
                 <div class="icon">
@@ -63,7 +69,7 @@
                     <td style="width: 400px">Mô tả</td>
                     <td style="width: 150px">Chức năng</td>
                 </tr>
-                <!-- <?php foreach ($listsanpham as $sanpham) { 
+                <?php foreach ($listsanpham as $sanpham) { 
                     extract($sanpham);
                     $sua = "index.php?act=editsp&id=".$id;
                     $xoa = "index.php?act=deletesp&id=".$id;
@@ -85,7 +91,7 @@
                         Xóa
                     </a>
             </tr>';
-             } ?> -->
+             } ?>
             </table>
         </div>
     </div>

@@ -34,10 +34,10 @@
                 <td>'.$email.'</td>
                 <td>'.$diachi.'</td>
                 <td>'.$sdt.'</td>
-                <td>'.($trangthai === 0 ? "<p style='color: green;'>Hoạt động</p>" : "<p style='color: red;'>Bị khóa tài khoản</p>").'</td>
-                <td>'.($idvaitro === 1 ? "Admin" : "khách hàng").'</td>
+                <td>'.($trangthai == 0 ? "<p style='color: green;'>Hoạt động</p>" : "<p style='color: red;'>Bị khóa tài khoản</p>").'</td>
+                <td>'.($idvaitro == 1 ? "Admin" : "khách hàng").'</td>
                 <td class="edit-delete">
-                    '.($trangthai === 0 ? "<a href=".$khoataikhoan." onclick='return confirmUpdate()' class='delete'>
+                    '.($trangthai == 0 ? "<a href=".$khoataikhoan." onclick='return confirmUpdate()' class='delete'>
                     Khóa tài khoản
                 </a>"
                  : "<a href=".$molaitaikhoan." onclick='return confirmUpdate()' class='detail'>Mở lại tài khoản</a>").'
@@ -50,9 +50,6 @@
     </div>
 </body>
 <script>
-    function checkRole($idvaitro) {
-    return role === 1 ? "Admin" : "khách hàng";
-}
 function confirmUpdate() {
     if (confirm("Bạn có muốn cập nhật trạng thái không ?")) {
         document.location = "index.php?act=listsp";
