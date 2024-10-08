@@ -1,0 +1,28 @@
+.content-information {
+  width: 900px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.content-main {
+  padding: 0px 10px;
+}
+
+.information {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.information-name {
+  display: flex;
+  justify-content: space-between;
+  margin: 17px 0px;
+  font-size: 17px;
+}
+
+.information-change {
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+}
