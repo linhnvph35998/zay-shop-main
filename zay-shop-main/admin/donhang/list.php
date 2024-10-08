@@ -32,30 +32,41 @@
                 </tr>
                 <?php foreach ($listdonhang as $donhang) { 
                     extract($donhang);
-                    $sua = "index.php?act=editsp&id=".$id;
+                    $trangthai = isset($donhang['trangthai']) ? $donhang['trangthai'] : '';
+                    $ttdh = trangthai_donhang($trangthai);
+                    $linkupdate = "index.php?act=sua_trangthai&id=" . $id;
                     $huyhang = "index.php?act=huydonhang&id=".$id;
                     $xacnhanhang = "index.php?act=xacnhandonhang&id=".$id;
                     $detail = "index.php?act=chitietdonhang&id=".$id;
-                echo '<tr>
-                <td>'.$id.'</td>
-                <td>'.$khachhang.'</td>
-                <td>'.$email.'</td>
-                <td>'.$sdt.'</td>
-                <td>'.$diachi.'</td>
-                <td>'.$thoigiandathang.'</td>
-                <td>'.($trangthai == 0 ? "<p style='color: orange;'>Đang kiểm duyệt</p>" : ($trangthai == 2 ? "<p style='color: green;'>Thành công</p>" : "<p style='color: red;'>Hủy bỏ</p>")).'</td>
-                <td>'.$ghichu.'</td>
+                ?>
+                <tr>
+                <td><?=$id?></td>
+                <td><?=$khachhang?></td>
+                <td><?=$email?></td>
+                <td><?=$sdt?></td>
+                <td><?=$diachi?></td>
+                <td><?=$thoigiandathang?></td>
+                <td><?=$ttdh?></td>
+                <td><?=$ghichu?></td>
                 <td class="edit-delete">
-                <a href="'.$detail.'" class="detail">
+                    <a href="<?=$detail?>" class="detail">
                         Chi tiết đơn hàng
                     </a>
-                    <a href="'.$huyhang.'" onclick="return xacNhanHuy()" class="delete">
+                    <a href="<?=$huyhang?>" onclick="return xacNhanHuy()" class="delete">
                         Hủy giao hàng
                     </a>
-                    <a href="'.$xacnhanhang.'" onclick="return xacNhan()" class="success">
+                    <a href="<?=$xacnhanhang?>" onclick="return xacNhan()" class="success">
                         Xác nhận hàng
                     </a>
-            </tr>';
+                    <a href="<?= $linkupdate ?>" class="btn btn-primary" style="margin: 0 10px;">
+                                        <i class="bi bi-pencil-fill"></i>
+                                        Sửa
+                                    </a>
+
+
+                </tr>
+
+              <?php  
              } ?>
 
             </table>
