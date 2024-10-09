@@ -4,7 +4,7 @@ if(is_array($sanpham)){
 }
 ?>
 
-<div class="wrapper">
+<div class="wrapper ">
     <h1 style="text-align: center;">Chi tiết sản phẩm</h1>
     <div class="container">
         <div class="product-detail-img">
