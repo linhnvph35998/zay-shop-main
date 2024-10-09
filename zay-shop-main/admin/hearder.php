@@ -54,7 +54,7 @@
                 </li>
                 <li class="nav-item">
                     <div class="function">
-                        <form action="" method="post">
+                        <form action="login_admin.php" method="post">
                             <input type="submit" name="dangxuat" value="Đăng xuất" />
                         </form>
                     </div>

@@ -8,8 +8,11 @@
 <link rel="stylesheet" href="./CSS/aside.css">
 <link rel="stylesheet" href="./CSS/add.css">
 <link rel="stylesheet" href="./CSS/edit.css">
-
 <?php
+session_start();
+if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+
+
 include "hearder.php";
 include "../model/pdo.php";
 include "../model/danhmuc.php";
@@ -209,6 +212,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             $listdonhang = loadAllDonHang();
             include "./donhang/list.php";
             break;
+        case "dangxuat":
+            session_unset();
+            header('location:login_admin.php');
+            break;
         default:
         $tongdm = tinhtongdm();
         $tongsp = tinhtongsp();
@@ -229,7 +236,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         include "home.php";
 }
 include "footer.php";
+} else {
+    header('location:login_admin.php');
+}
 ?>
-
 
 <script src="./JS/script.js"></script>
