@@ -18,7 +18,18 @@
                 <td style="padding: 10px; width: 200px;">Chức năng</td>
             </tr>
             <?php 
-            foreach($donhang as $value) { ?>
+            foreach($donhang as $value) {
+                extract($value);
+                $links = "index.php?act=huydonhang&id=" . $id;
+                $link_final = "index.php?act=nhanhang&id=" . $id;
+                if (isset($value['trangthai']) && $value['trangthai']) {
+                    $tt = $value['trangthai'];
+                } else {
+                    $tt = 0;
+                }
+                $ttdh = trangthai_donhang($tt);
+            ?>
+            
             <tr>
                 <td style="padding: 10px;"><?php echo $value['id'] ?></td>
                 <td style="padding: 10px;"><?php foreach ($giohang as $gh) {
@@ -31,16 +42,29 @@
                 <td style="padding: 10px;">
                     <?php echo $value['phuongthucthanhtoan'] === 0 ? "Chuyển khoản" : "Thanh toán khi giao hàng" ?></td>
                 <td style="padding: 10px;">
-                    <?php echo $value['trangthai'] == 0 ? "<p style='color: orange;'>Đang kiểm duyệt</p>" : "" ?>
-                    <?php echo $value['trangthai'] == 1 ? "<p style='color: red;'>Huỷ bỏ</p>" : "" ?>
-                    <?php echo $value['trangthai'] == 2 ? "<p style='color: green;'>Thành công</p>" : "" ?>
+                <span style='color: green;'><?= $ttdh ?></span>
                 </td>
                 <td style="padding: 10px;"><?php echo $value['ghichu'] ?></td>
                 <td style="padding: 10px;">
-                    <?php echo $value['trangthai'] == 0 ? "<a onclick='return huyBo()' class='btn btn-danger my-1' style='width: 100%; font-size: 14px'
-                        href='index.php?act=huydonhang&id=".($value['id'])."'>Hủy đơn hàng</a>" : "" ?>
-                    <a class="btn btn-warning my-1" style="width: 100%; font-size: 14px"
-                        href="index.php?act=chitietdonhang&id=<?php echo $value['id'] ?>">Chi tiết đơn hàng</a>
+                <?php
+                    if (isset($value['trangthai']) && $value['trangthai'] != 2 && $value['trangthai'] != 3 && $value['trangthai'] != 4 && $value['trangthai'] != 5) {
+                ?>
+                    <a href="<?= $links ?>" onclick='return huyBo()' class='btn btn-danger my-1' style='width: 100%; font-size: 14px' >Hủy đơn hàng</a><br
+                <?php
+                }
+                ?>
+                <!-- nhanhang -->
+                <?php
+                if (isset($value['trangthai']) && $value['trangthai'] !=0 && $value['trangthai'] !=1 && $value['trangthai'] != 4 && $value['trangthai'] != 5) {
+                ?>
+                    <a href="<?= $link_final ?>" class='btn btn-primary my-1' style='width: 100%; font-size: 14px' >Đã nhận</a>
+                <?php
+                }
+                ?>    
+                
+                <a class="btn btn-warning my-1" style="width: 100%; font-size: 14px"
+                    href="index.php?act=chitietdonhang&id=<?php echo $value['id'] ?>">Chi tiết đơn hàng</a>
+                        
                 </td>
 
             </tr>

@@ -75,5 +75,36 @@ function insert_donhang($khachhang,$diachi,$sdt,$email,$thoigiandathang,$phuongt
     return pdo_execute_return_lastInsertId($sql);
 }
 
+function trangthai_donhang($trangthai)
+{
+    
+    switch ($trangthai) {
+        case '0':
+            $stt = "Đơn hàng mới";
+            break;
+        case '1':
+            $stt = "Đang chuẩn bị";
+            break;
+        case '2':
+            $stt = "Đang Giao";
+            break;
+        case '3':
+            $stt = "Hoàn tất giao hàng";
+            break;
+        case '4':
+            $stt = "Hủy đơn hàng";
+            break;
+        case '5':
+            $stt = "Đã nhận hàng";
+            break;
+    }
+    return $stt;
+}
+
+function update_trangthai($id, $trangthai)
+{
+    $sql = "UPDATE donhang SET trangthai='$trangthai' WHERE id=$id;";
+    pdo_execute($sql);
+}
 
 ?>

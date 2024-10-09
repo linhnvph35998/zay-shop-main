@@ -166,12 +166,14 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case "huydonhang":
             if(isset($_GET['id']) && ($_GET['id'] > 0)){
                 huyHang($_GET['id']);
+                update_trangthai($_GET['id'], 4);
             }
             include "./taikhoan/list.php";
             break;
         case "xacnhandonhang":
             if(isset($_GET['id']) && ($_GET['id'] > 0)){
                 xacNhanHang($_GET['id']);
+                update_trangthai($_GET['id'], 1);
             }
             include "./donhang/list.php";
             break;
@@ -185,6 +187,27 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $donhang = loadOneDonHang($_GET['id']);
             }
             include "./donhang/chitiet.php";
+            break;
+        case "sua_trangthai":
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $result =  loadOneDonHang($_GET['id']);
+            }
+            include "./donhang/update.php";
+            break;
+        case "update_trangthai":
+            if (isset($_POST['capnhap_hd']) && $_POST['capnhap_hd']) {
+
+                $id = $_POST['id'];
+                $trangthai = $_POST["trangthai"];
+                update_trangthai($id, $trangthai);
+                $thongbao = "cap nhat thanh cong";
+            }
+            header('location:index.php?act=xem_update_trangthai');
+            include    "./donhang/list.php";
+                break;
+        case "xem_update_trangthai":
+            $listdonhang = loadAllDonHang();
+            include "./donhang/list.php";
             break;
         default:
         $tongdm = tinhtongdm();

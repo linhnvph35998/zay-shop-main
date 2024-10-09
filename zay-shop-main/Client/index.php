@@ -20,6 +20,7 @@ include "../model/sanpham.php";
 include "../model/danhmuc.php";
 include "../model/giohang.php";
 include "../model/donhang.php";
+include "../model/binhluan.php";
 if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
 }

@@ -49,13 +49,19 @@ if(isset($_SESSION['user'])){
                 <?php
                     foreach ($giohang as $value) {
                         extract($value);
+                        if (isset($value['trangthai']) && $value['trangthai']) {
+                            $tt = $value['trangthai'];
+                        } else {
+                            $tt = 0;
+                        }
+                        $ttdh = trangthai_donhang($tt);
                         echo '<tr>
                         <td style="padding: 10px"><img src="../Img/'.$img.'" width="120px"/></td>
                         <td style="padding: 10px">'.$name.'</td>
                         <td style="padding: 10px">'.$giatien.'đ</td>
                         <td style="padding: 10px">'.$soluong.' </td>
                         <td style="padding: 10px">'.($giatien * $soluong).'đ</td>
-                        <td style="padding: 10px">'.($trangthai == 0 ? '<p style="color: orange">Đang kiểm duyệt</p>' : '<p style="color: red;">Hủy bỏ</p>').'</td>
+                        <td style="padding: 10px">'.$ttdh.'</td>
                         </tr>';
                     } 
                     ?>

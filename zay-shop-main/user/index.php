@@ -75,6 +75,14 @@ if(isset($_GET['act']) && $_GET['act'] != ""){
             }
             include "taikhoan/list.php";
             break;
+        case 'nhanhang':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                update_trangthai($_GET['id'], 5);
+            }
+            $list_donhang = loadOneDonHangUser($_SESSION['user']['id']);
+            header('location:index.php?act=lichsudathang');
+            include "./view/dathang.php";
+            break;
         case "thaydoithongtin":
             $taikhoan = loadone_taikhoan($_SESSION["user"]["id"]);
             if(isset($_POST['suathongtin']) && $_POST['suathongtin']){
