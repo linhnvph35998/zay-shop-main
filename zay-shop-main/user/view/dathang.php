@@ -42,7 +42,7 @@
                 <td style="padding: 10px;">
                     <?php echo $value['phuongthucthanhtoan'] === 0 ? "Chuyển khoản" : "Thanh toán khi giao hàng" ?></td>
                 <td style="padding: 10px;">
-                <span ><?= $ttdh ?></span>
+                <span style='color: green;'><?= $ttdh ?></span>
                 </td>
                 <td style="padding: 10px;"><?php echo $value['ghichu'] ?></td>
                 <td style="padding: 10px;">

@@ -52,13 +52,25 @@
                     <a href="<?=$detail?>" class="detail">
                         Chi tiết đơn hàng
                     </a>
+                    <?php
+                    if (isset($donhang['trangthai']) && $donhang['trangthai'] != 2 && $donhang['trangthai'] != 3 && $donhang['trangthai'] != 4 && $donhang['trangthai'] != 5) {
+                    ?>
                     <a href="<?=$huyhang?>" onclick="return xacNhanHuy()" class="delete">
                         Hủy giao hàng
                     </a>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    if (isset($donhang['trangthai']) && $donhang['trangthai'] !=1 && $donhang['trangthai'] !=2 && $donhang['trangthai'] !=3 && $donhang['trangthai'] != 4 && $donhang['trangthai'] != 5) {
+                    ?>
                     <a href="<?=$xacnhanhang?>" onclick="return xacNhan()" class="success">
                         Xác nhận hàng
                     </a>
-                    <a href="<?= $linkupdate ?>" class="btn btn-primary" style="margin: 0 10px;">
+                    <?php
+                    }
+                    ?>
+                    <a href="<?= $linkupdate ?>" class="btn btn-primary w-100" style="margin: 0 0px;">
                                         <i class="bi bi-pencil-fill"></i>
                                         Sửa
                                     </a>

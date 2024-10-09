@@ -5,7 +5,7 @@ extract($result);
 $ttdh = trangthai_donhang($trangthai);
 ?>
 <!-- Content Wrapper. Contains page content -->
-<div class="container ">
+<div class="container  admin ">
     <!-- Main content -->
     <section class="content">
         <div class="card card-primary" style="width: 70%; margin-left: 200px;">
