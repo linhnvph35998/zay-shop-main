@@ -70,10 +70,16 @@
                     <?php
                     }
                     ?>
+                    <?php
+                    if (isset($donhang['trangthai']) && $donhang['trangthai'] != 4 && $donhang['trangthai'] != 5) {
+                    ?>
                     <a href="<?= $linkupdate ?>" class="btn btn-primary w-100" style="margin: 0 0px;">
                                         <i class="bi bi-pencil-fill"></i>
                                         Sửa
                                     </a>
+                                    <?php
+                    }
+                    ?>
 
 
                 </tr>

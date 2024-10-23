@@ -28,9 +28,7 @@ if (is_array($sanpham)) {
                 <input type="hidden" name="giatien" value="<?= $giatien ?>" />
                 <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" onclick="ThemGioHang()" />
             </form>
-            <div class="product-details-buy">
-                <a href="index.php?act=dathang">Mua hàng</a>
-            </div>
+            
         </div>
     </div>
     <iframe src="./view/binhluanform.php?idpro=<?= $_GET['id'] ?>" width="100%" height="300px" frameborder="0"></iframe>
