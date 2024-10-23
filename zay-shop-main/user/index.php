@@ -71,6 +71,7 @@ if(isset($_GET['act']) && $_GET['act'] != ""){
         case "huydonhang":
             if(isset($_GET['id']) && ($_GET['id'] > 0)){
                 huyHang($_GET['id']);
+                update_trangthai($_GET['id'], 4);
                 header("Location: index.php?act=lichsudathang");
             }
             include "taikhoan/list.php";
