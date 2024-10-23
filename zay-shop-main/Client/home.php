@@ -58,7 +58,7 @@
                  echo '<div class="product-item">
                      <div class="product-img">
                      <a href="'.$detail.'">
-                          <img src="../Img/'.$img.'" alt="">
+                          <img src="../img/'.$img.'" alt="">
                        </a>
                          <div class="product-click">
                              <a href="'.$detail.'" class="product-click-view">

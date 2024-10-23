@@ -7,11 +7,11 @@
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="row-input">
                     <label>Tên danh mục </label> <br>
-                    <input type="text" name="name">
+                    <input type="text" name="name" required>
                 </div>
                 <div class="row-input">
                     <label>Ảnh </label> <br>
-                    <input type="file" name="img">
+                    <input type="file" name="img" required>
                 </div>
                 <div class="row-btn">
                     <input onclick="return confirmAdd()" type="submit" name="them" value="Thêm">

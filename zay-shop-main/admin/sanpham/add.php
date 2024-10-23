@@ -6,42 +6,41 @@
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="row-input">
                 <label> Mã sản phẩm </label> <br>
-                <input type="text" name="id">
+                <input type="text" name="id" required>
             </div>
             <div class="row-input">
                 <label>Tên Sản phẩm </label> <br>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
             </div>
             <div class="row-input">
                 <label>Giá </label> <br>
-                <input type="text" name="giatien">
+                <input type="text" name="giatien" required>
             </div>
             <div class="row-input">
                 <label>Ảnh </label> <br>
-                <input type="file" name="img">
+                <input type="file" name="img" required>
             </div>
             <div class="row-input">
                 <label>Mô tả </label> <br>
-                <input type="text" name="mota">
+                <input type="text" name="mota" required>
             </div>
             <div class="row-input">
                 <label>Danh mục </label> <br>
                 <select name="iddm" id="">
                     <option value="0" selected>Tất cả</option>
-                    <?php foreach($listdanhmuc as $danhmuc){
+                    <?php foreach ($listdanhmuc as $danhmuc) {
                         extract($danhmuc);
-                        echo '<option value="'.$id.'" >'.$name.'</option>';
-
+                        echo '<option value="' . $id . '" >' . $name . '</option>';
                     } ?>
                 </select>
             </div>
             <div class="row-input">
                 <label>Lượt xem </label> <br>
-                <input type="text" name="luotxem">
+                <input type="text" name="luotxem" required>
             </div>
             <div class="row-input">
                 <label>Số lượng </label> <br>
-                <input type="text" name="soluong">
+                <input type="text" name="soluong" required>
             </div>
             <div class="row-btn">
                 <input onclick="return confirmAdd()" type="submit" name="them" value="Thêm">
@@ -50,10 +49,10 @@
     </div>
 </div>
 <script>
-    function confirmAdd(){
-        if(confirm("Bạn có chắc muốn thêm")){
-            document.location ="index.php?act=listsp";
-        }else{
+    function confirmAdd() {
+        if (confirm("Bạn có chắc muốn thêm")) {
+            document.location = "index.php?act=listsp";
+        } else {
             return false;
         }
     }

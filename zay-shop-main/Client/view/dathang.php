@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['user'])){
+if (isset($_SESSION['user'])) {
     $name = $_SESSION['user']['username'];
     $diachi = $_SESSION['user']['diachi'];
     $email = $_SESSION['user']['email'];
@@ -17,19 +17,19 @@ if(isset($_SESSION['user'])){
         <form action="" method="POST">
             <div class="pay-label">
                 <label for="card-number">Tên tài khoản</label>
-                <input type="text" name="khachhang" value="<?=$name?>" required>
+                <input type="text" name="khachhang" value="<?= $name ?>" required>
             </div>
             <div class="pay-label">
                 <label for="card-number">Địa chỉ</label>
-                <input type="text" name="diachi" value="<?=$diachi?>" required>
+                <input type="text" name="diachi" value="<?= $diachi ?>" required>
             </div>
             <div class="pay-label">
                 <label for="card-number">Email</label>
-                <input type="text" name="email" value="<?=$email?>" required>
+                <input type="text" name="email" value="<?= $email ?>" required>
             </div>
             <div class="pay-label">
                 <label for="card-number">Số điện thoại</label>
-                <input type="text" name="sdt" value="<?=$sdt?>" required>
+                <input type="text" name="sdt" value="<?= $sdt ?>" required>
             </div>
             <div class="pay-label">
                 <label for="card-number">Ghi chú</label>
@@ -55,31 +55,32 @@ if(isset($_SESSION['user'])){
             <div class="product-bill-item">
                 <div class="product-bill-item-list">
                     <?php
+                    var_dump($cart);
                     foreach ($_SESSION['mycart'] as $cart) {
-                        $image = '../Img/'.$cart[2].'';
+                        $image = '../../img' . $cart[2] . '';
                         echo '<div class="product-bill-media">
                    <div class="product-bill-media-text">
-                       <div class="product-bill-media-text-img"><img src="'.$image.'" alt="">
-                           <p>'.$cart[1].' <span>x'.$cart[5].'</span></p>
+                       <div class="product-bill-media-text-img"><img src="' . $image . '" alt="">
+                           <p>' . $cart[1] . ' <span>x' . $cart[5] . '</span></p>
                        </div>
-                       <b>'.$cart[4].'đ</b>
+                       <b>' . $cart[4] . 'đ</b>
                    </div>
                </div>';
-                    } 
-                   ?>
+                    }
+                    ?>
                 </div>
                 <div class="product-bill-item-total">
                     <div class="product-bill-item-total-name">
                         <p>Thành tiền </p>
                     </div>
                     <div class="product-bill-item-total-name">
-                        <b><?php 
-                        $tong = 0;
-                        foreach ($_SESSION['mycart'] as $cart) { 
-                        $tong += $cart[4];
-                        }
-                        echo $tong;
-                         ?>đ</b>
+                        <b><?php
+                            $tong = 0;
+                            foreach ($_SESSION['mycart'] as $cart) {
+                                $tong += $cart[4];
+                            }
+                            echo $tong;
+                            ?>đ</b>
                     </div>
                 </div>
             </div>
@@ -88,11 +89,11 @@ if(isset($_SESSION['user'])){
 </div>
 
 <script>
-function datHang() {
-    if (confirm("Bạn có muốn đặt hàng không ?")) {
-        alert("Đặt hàng thành công")
-    } else {
-        return false;
+    function datHang() {
+        if (confirm("Bạn có muốn đặt hàng không ?")) {
+            alert("Đặt hàng thành công")
+        } else {
+            return false;
+        }
     }
-}
 </script>

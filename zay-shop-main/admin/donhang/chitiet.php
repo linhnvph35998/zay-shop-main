@@ -21,7 +21,7 @@ if(is_array($donhang)){
             <p>Trạng thái:
                 <?php if($trangthai == 0){
                     echo "<span style='color: orange;'>Đang kiểm duyệt</span>";
-                } else if($trangthai === 1) {
+                } else if($trangthai == 1) {
                     echo "<span style='color: red;'>Huỷ bỏ</span>";
                 } else {
                     echo "<span style='color: green;'>Thành công</span>";

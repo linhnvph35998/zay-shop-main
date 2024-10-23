@@ -9,10 +9,10 @@ if (isset($_POST['dangnhap'])) {
     if (is_array($checkuser)) {
         $_SESSION['user'] = $checkuser;
         extract($_SESSION['user']);
-        if ($idvaitro  != 0) {
+        if ($idvaitro  == 1) {
             header('location:index.php');
         } else {
-            $thongbao1 = "UserName or password not provided";
+            $thongbao1 = "Tài khoản không có quyền truy cập trang admin";
         }
     }
 }

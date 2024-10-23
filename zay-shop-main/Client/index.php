@@ -36,6 +36,14 @@ if (isset($_SESSION["user"])) {
         die;
     }
 }
+// if (isset($_SESSION["user"])) {
+//     extract($_SESSION['user']);
+//     if ($idvaitro == 1) {
+//        header("location: admin/index.php?");
+//     }else{
+//         echo "Bạn không có quyền truy cập trang admin";
+//     }
+// }
 include "./hearder.php";
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
@@ -159,58 +167,58 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             include "view/giohang.php";
             break;
 
-            case "deletecart":
-                if(isset($_GET['id'])){
-                    array_splice($_SESSION['mycart'],$_GET['id'],1);
-                } else {
-                    $_SESSION['mycart'] = [];
+        case "deletecart":
+            if (isset($_GET['id'])) {
+                array_splice($_SESSION['mycart'], $_GET['id'], 1);
+            } else {
+                $_SESSION['mycart'] = [];
+            }
+            header("Location: index.php?act=giohang");
+            break;
+        case "vewebsite":
+            include "view/vewebsite.php";
+            break;
+
+        case "dathang":
+            if (isset($_SESSION["user"]) === []) {
+                echo "Bạn chưa đăng nhập tài khoản";
+                die;
+            }
+            $donhang = null;
+            $giohang = null;
+            if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
+                $khachhang = $_POST['khachhang'];
+                $diachi = $_POST['diachi'];
+                $sdt = $_POST['sdt'];
+                $email = $_POST['email'];
+                $phuongthucthanhtoan = $_POST['phuongthucthanhtoan'];
+                $thoigiandathang = date('h:i:sa d/m/Y');
+                $ghichu = $_POST['ghichu'];
+
+                $iddathang = insert_donhang($khachhang, $diachi, $sdt, $email, $thoigiandathang, $phuongthucthanhtoan, count($_SESSION['mycart']), $ghichu, $_SESSION['user']['id']);
+                $donhang = loadOneDonHang($iddathang);
+                $giohang = loadCart($iddathang);
+                foreach ($_SESSION['mycart'] as $cart) {
+                    insert_giohang($_SESSION['user']['id'], $cart[0], $cart[1], $cart[2], $cart[3], $cart[5], $iddathang);
                 }
-                header("Location: index.php?act=giohang");
-                break;
-            case "vewebsite":
-                include "view/vewebsite.php";
-                break;
-            
-                case "dathang":
-                    if(isset($_SESSION["user"]) === []){
-                        echo "Bạn chưa đăng nhập tài khoản";
-                        die;
-                    }
-                    $donhang = null;
-                    $giohang = null;
-                        if(isset($_POST['dongydathang'])&&($_POST['dongydathang'])){
-                            $khachhang=$_POST['khachhang'];
-                            $diachi=$_POST['diachi'];
-                            $sdt=$_POST['sdt'];
-                            $email=$_POST['email'];
-                            $phuongthucthanhtoan = $_POST['phuongthucthanhtoan'];
-                            $thoigiandathang = date('h:i:sa d/m/Y');
-                            $ghichu = $_POST['ghichu'];
-        
-                            $iddathang = insert_donhang($khachhang,$diachi,$sdt,$email,$thoigiandathang,$phuongthucthanhtoan,count($_SESSION['mycart']),$ghichu,$_SESSION['user']['id'] );
-                            $donhang = loadOneDonHang($iddathang);
-                            $giohang = loadCart($iddathang);
-                            foreach ($_SESSION['mycart']as $cart ) {
-                                insert_giohang($_SESSION['user']['id'],$cart[0],$cart[1],$cart[2],$cart[3],$cart[5],$iddathang);
-                            }
-                            $_SESSION['mycart'] = [];
-                            header("Location: index.php?act=hoadon&iddonhang=$iddathang");
-                        }
-                        $donhang = loadHoaDonUser($_SESSION['user']['id']);
-                        $giohang = loadCart($_SESSION['user']['id']);
-        
-                        include "view/dathang.php";
-                    break;
-                    case "hoadon":
-                        if(!isset($_SESSION["user"])){
-                            header("Location: index.php");
-                        }
-                        if(isset($_GET['iddonhang']) && ($_GET['iddonhang']) > 0){
-                            $giohang = loadCart($_GET['iddonhang']);
-                            $donhang = loadOneDonHang($_GET['iddonhang']);
-                        }
-                        include "view/hoadon.php";
-                        break;    
+                $_SESSION['mycart'] = [];
+                header("Location: index.php?act=hoadon&iddonhang=$iddathang");
+            }
+            $donhang = loadHoaDonUser($_SESSION['user']['id']);
+            $giohang = loadCart($_SESSION['user']['id']);
+
+            include "view/dathang.php";
+            break;
+        case "hoadon":
+            if (!isset($_SESSION["user"])) {
+                header("Location: index.php");
+            }
+            if (isset($_GET['iddonhang']) && ($_GET['iddonhang']) > 0) {
+                $giohang = loadCart($_GET['iddonhang']);
+                $donhang = loadOneDonHang($_GET['iddonhang']);
+            }
+            include "view/hoadon.php";
+            break;
 
         default:
             $listdanhmuc = loadAllDm();
