@@ -218,6 +218,17 @@ if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
                 $listthongke = loadAllThongKe();
                 include "thongke/thongke.php";
                 break;
+                case "binhluan":
+                    $result = loadall_binhluan_admin();
+                    include "./binhluan/list.php";
+                    break;
+                case "xoa_cmt":
+                    if (isset($_GET['idcmt']) && $_GET['idcmt'] > 0) {
+                        delete_cmt($_GET['idcmt']);
+                    }
+                    $result = loadall_binhluan_admin();
+                    include "./binhluan/list.php";
+                    break;
             case "dangxuat":
                 session_unset();
                 header('location:login_admin.php');

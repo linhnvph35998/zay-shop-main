@@ -2,6 +2,7 @@
 session_start();
 include "../model/pdo.php";
 include "../model/login.php";
+
 if (isset($_POST['dangnhap'])) {
     $user = $_POST['user'];
     $pass = $_POST['pass'];
@@ -9,7 +10,7 @@ if (isset($_POST['dangnhap'])) {
     if (is_array($checkuser)) {
         $_SESSION['user'] = $checkuser;
         extract($_SESSION['user']);
-        if ($idvaitro  != 2) {
+        if ($idvaitro != 2) {
             header('location:index.php');
         } else {
             $thongbao1 = "UserName or password not provided";
@@ -23,82 +24,57 @@ if (isset($_POST['dangnhap'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../thu_vien/plugins/fontawesome-free/css/all.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="../../thu_vien/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../thu_vien/dist/css/adminlte.min.css">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+    </style>
 </head>
 
-<body class="hold-transition login-page">
-    <div class="login-box ">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="#" class="h1"><b>Admin</b></a>
-            </div>
-            <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-
-                <form action="login_admin.php" method="POST">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="User name" name="user">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="pass">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div>
-                            <button type="submit" class="btn btn-primary" name="dangnhap">Đăng Nhập</button>
-
-                        </div>
-                        <div style="padding-top: 10px; padding-left: 40px;">
-
-                            <?php
-                            if (isset($thongbao1) && $thongbao1 != "") {
-                                echo $thongbao1;
-                            }
-                            ?>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-            </div>
-            <!-- /.card-body -->
+<body>
+    <div class="login-container">
+        <div class="text-center mb-4">
+            <h1 class="h3">Admin Login</h1>
         </div>
-        <!-- /.card -->
+        <form action="login_admin.php" method="POST">
+            <div class="form-group">
+                <label for="user">User Name</label>
+                <input type="text" class="form-control" id="user" placeholder="User name" name="user" required>
+            </div>
+            <div class="form-group">
+                <label for="pass">Password</label>
+                <input type="password" class="form-control" id="pass" placeholder="Password" name="pass" required>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="remember">
+                <label class="form-check-label" for="remember">Remember Me</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" name="dangnhap">Đăng Nhập</button>
+            <div class="mt-3 text-danger text-center">
+                <?php
+                if (isset($thongbao1) && $thongbao1 != "") {
+                    echo $thongbao1;
+                }
+                ?>
+            </div>
+        </form>
     </div>
-    <!-- /.login-box -->
-    <!-- jQuery -->
-    <script src="../../thu_vien/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../thu_vien/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../thu_vien/dist/js/adminlte.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

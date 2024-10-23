@@ -28,19 +28,18 @@ function loadall_binhluantrangchu()
     return $listbinhluan;
 }
 
-function loadall_binhluan_admin($idpro = 0)
+function loadall_binhluan_admin()
 {
-    $sql = "SELECT binhluan.*, taikhoan.user as tennguoidung, sanpham.name as tensanpham 
-            FROM binhluan 
-            INNER JOIN sanpham ON binhluan.idpro = sanpham.id 
-            INNER JOIN taikhoan ON binhluan.iduser = taikhoan.id 
-            WHERE 1";
+    $sql = "SELECT binhluan.*, khachhang.username as tennguoidung, sanpham.name as tensanpham FROM binhluan
+    JOIN khachhang ON binhluan.iduser = khachhang.id
+    JOIN sanpham ON binhluan.idpro = sanpham.id ORDER BY binhluan.id DESC"; 
+            
 
-    if ($idpro > 1) {
-        $sql .= " AND binhluan.idpro='" . $idpro . "'";
-    }
+    // if ($idpro > 1) {
+    //     $sql .= " AND binhluan.idpro='" . $idpro . "'";
+    // }
 
-    $sql .= " ORDER BY binhluan.id DESC";
+    // $sql .= " ORDER BY binhluan.id DESC";
     $result = pdo_query($sql);
 
     return $result;
