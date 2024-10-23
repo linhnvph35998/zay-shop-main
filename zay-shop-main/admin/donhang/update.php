@@ -10,7 +10,7 @@ $ttdh = trangthai_donhang($trangthai);
     <section class="content">
         <div class="card card-primary" style="width: 70%; margin-left: 200px;">
             <div class="card-header">
-                <h3 class="card-title">cập nhập trạng thái đơn hàng</h3>
+                <h3 class="card-title">Cập nhập trạng thái đơn hàng</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -18,10 +18,16 @@ $ttdh = trangthai_donhang($trangthai);
             <div class="form-group">
                   <label style="padding-left: 40px;">Trạng thái</label>
                   <select style="width: 90%; margin-left: 40px;" class="form-control" name="trangthai">
-                    <option value=""><?=$ttdh ?></option>
-                    <option value="1">Đang chuẩn bị</option>
+                    
+                    <?php if ($trangthai == 1): ?>
+                        <option value="2">Đang giao</option>
+                        <option value="3">Hoàn tất giao hàng</option>
+                    <?php elseif ($trangthai == 2): ?>
+                        <option value="3">Hoàn tất giao hàng</option>
+                    <?php endif; ?>
+                    <!-- <option value="1">Đang chuẩn bị</option>
                     <option value="2">Đang giao hang </option>
-                    <option value="3">Hoàn tất giao hàng </option>
+                    <option value="3">Hoàn tất giao hàng </option> -->
                   
                    
                     
