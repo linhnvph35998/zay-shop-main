@@ -21,7 +21,7 @@ $sanpham = loadOneSp($idpro);
     <?php
     foreach ($listbl as $ds) {
       extract($ds);
-      if ($trangthai === 0) {
+      if ($trangthai == 0) {
         echo '<tr>
                           <td>' . $username . '</td>
                           <td>' . $noidung . '</td>
