@@ -18,10 +18,12 @@ $ttdh = trangthai_donhang($trangthai);
             <div class="form-group">
                   <label style="padding-left: 40px;">Trạng thái</label>
                   <select style="width: 90%; margin-left: 40px;" class="form-control" name="trangthai">
-                    <option value=""><?=$ttdh ?></option>
-                    <option value="1">Đang chuẩn bị</option>
-                    <option value="2">Đang giao hang </option>
-                    <option value="3">Hoàn tất giao hàng </option>
+                    <?php if ($trangthai == 1): ?>
+                        <option value="2">Đang giao</option>
+                        <option value="3">Hoàn tất giao hàng</option>
+                    <?php elseif ($trangthai == 2): ?>
+                        <option value="3">Hoàn tất giao hàng</option>
+                    <?php endif; ?>
                   
                    
                     
