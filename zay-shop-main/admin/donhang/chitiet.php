@@ -1,5 +1,5 @@
 <?php
-if(is_array($donhang)){
+if (is_array($donhang)) {
     extract($donhang);
 }
 ?>
@@ -11,23 +11,25 @@ if(is_array($donhang)){
     </div>
     <div class="container-donhang">
         <div style="margin-left: 0; padding: 0px 10px;" class="list-product-detail">
-            <p>Mã đơn: <?=$id?></p>
-            <p>Tên khách hàng: <?=$khachhang?></p>
-            <p>Email: <?=$email?></p>
-            <p>SĐT: <?=$sdt?></p>
-            <p>Phương thức thanh toán: <?=$phuongthucthanhtoan === 0 ? "Chuyển khoản" : "Thanh toán khi giao hàng"?></p>
-            <p>Địa chỉ giao hàng: <?=$diachi?></p>
-            <p>Thời gian đặt hàng: <?=$thoigiandathang?></p>
+            <p>Mã đơn: <?= $id ?></p>
+            <p>Tên khách hàng: <?= $khachhang ?></p>
+            <p>Email: <?= $email ?></p>
+            <p>SĐT: <?= $sdt ?></p>
+            <p>Phương thức thanh toán: <?= $phuongthucthanhtoan == 0 ? "Chuyển khoản" : "Thanh toán khi giao hàng" ?></p>
+            <p>Địa chỉ giao hàng: <?= $diachi ?></p>
+            <p>Thời gian đặt hàng: <?= $thoigiandathang ?></p>
             <p>Trạng thái:
-                <?php if($trangthai == 0){
+                <?php if ($trangthai == 0) {
                     echo "<span style='color: orange;'>Đang kiểm duyệt</span>";
-                } else if($trangthai == 1) {
+                } else if ($trangthai == 1) {
                     echo "<span style='color: red;'>Huỷ bỏ</span>";
+                } else if ($trangthai == 4) {
+                    echo "<span style='color: red;'>Người dùng hủy đơn</span>";
                 } else {
                     echo "<span style='color: green;'>Thành công</span>";
-                }?></p>
+                } ?></p>
             </p>
-            <p>Ghi chú: <?=$ghichu?></p>
+            <p>Ghi chú: <?= $ghichu ?></p>
         </div>
     </div>
     <div class="m-2">
@@ -41,26 +43,26 @@ if(is_array($donhang)){
                 <td>Thành tiền</td>
             </tr>
             <?php
-                foreach ($giohang as $value) {
-                    extract($value);
-                    echo "<tr>
-                    <td>$name</td>
-                    <td><img src='../Img/$img' width='200px'/></td>
-                    <td>".$giatien."đ</td>
-                    <td>$soluong</td>
-                    <td>".($giatien * $soluong)."đ</td>
-                    </tr>";
-                } 
-                ?>
-        </table>
-        <h2>Tổng giá sản phẩm: <?php  
-            $tong = 0;
             foreach ($giohang as $value) {
                 extract($value);
-                $tong += $giatien * $soluong;
+                echo "<tr>
+                    <td>$name</td>
+                    <td><img src='../Img/$img' width='200px'/></td>
+                    <td>" . $giatien . "đ</td>
+                    <td>$soluong</td>
+                    <td>" . ($giatien * $soluong) . "đ</td>
+                    </tr>";
             }
-            echo $tong;
-            ?>đ</h2>
+            ?>
+        </table>
+        <h2>Tổng giá sản phẩm: <?php
+                                $tong = 0;
+                                foreach ($giohang as $value) {
+                                    extract($value);
+                                    $tong += $giatien * $soluong;
+                                }
+                                echo $tong;
+                                ?>đ</h2>
     </div>
     <div class="function-back">
         <a href="index.php?act=donhang">Quay lại trang đơn hàng</a>

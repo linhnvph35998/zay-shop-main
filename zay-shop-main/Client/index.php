@@ -22,7 +22,7 @@ include "../model/giohang.php";
 include "../model/donhang.php";
 include "../model/binhluan.php";
 if (!isset($_SESSION['mycart'])) {
-    $_SESSION['mycart'] = [];
+    $_SESSION['mycart'] == [];
 }
 
 
@@ -36,14 +36,7 @@ if (isset($_SESSION["user"])) {
         die;
     }
 }
-// if (isset($_SESSION["user"])) {
-//     extract($_SESSION['user']);
-//     if ($idvaitro == 1) {
-//        header("location: admin/index.php?");
-//     }else{
-//         echo "Bạn không có quyền truy cập trang admin";
-//     }
-// }
+
 include "./hearder.php";
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
@@ -180,7 +173,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             break;
 
         case "dathang":
-            if (isset($_SESSION["user"]) === []) {
+            if (isset($_SESSION["user"]) == []) {
                 echo "Bạn chưa đăng nhập tài khoản";
                 die;
             }
