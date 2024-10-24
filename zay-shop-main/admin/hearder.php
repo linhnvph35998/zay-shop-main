@@ -40,10 +40,10 @@
                         <p>Khách hàng</p>
                     </a>
                 </li>
-                <li class="nav-item ms-4 "  >
-                    <a href="index.php?act=binhluan" class="nav-link" >Bình luận</a>
+                <li class="nav-item ms-4 ">
+                    <a href="index.php?act=binhluan" class="nav-link">Bình luận</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a href="index.php?act=thongke" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>

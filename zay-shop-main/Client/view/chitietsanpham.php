@@ -28,75 +28,10 @@ if (is_array($sanpham)) {
                 <input type="hidden" name="giatien" value="<?= $giatien ?>" />
                 <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" onclick="ThemGioHang()" />
             </form>
-            
+
         </div>
     </div>
     <iframe src="./view/binhluanform.php?idpro=<?= $_GET['id'] ?>" width="100%" height="300px" frameborder="0"></iframe>
-    <!-- <div class="other">
-        <h1>Sản phẩm khác</h1>
-    </div>
-    <div class="other-product">
-        <div class="product-item">
-            <div class="product-img">
-                <img src="../Img/1.jpg" alt="">
-                <div class="product-click">
-                    <div class="product-click-view">
-                        <a href="">Xem chi tiết</a>
-                    </div>
-                    <div class="product-click-add">
-                        <p>Thêm vào giỏ hàng</p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-text">Áo adidas đen</div>
-            <div class="product-price">300.000đ</div>
-        </div>
-        <div class="product-item">
-            <div class="product-img">
-                <img src="../Img/11.jpg" alt="">
-                <div class="product-click">
-                    <div class="product-click-view">
-                        <a href="">Xem chi tiết</a>
-                    </div>
-                    <div class="product-click-add">
-                        <p>Thêm vào giỏ hàng</p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-text">Quần dài màu ghi</div>
-            <div class="product-price">200.000đ</div>
-        </div>
-        <div class="product-item">
-            <div class="product-img">
-                <img src="../Img/30.jpg" alt="">
-                <div class="product-click">
-                    <div class="product-click-view">
-                        <a href="">Xem chi tiết</a>
-                    </div>
-                    <div class="product-click-add">
-                        <p>Thêm vào giỏ hàng</p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-text"></div>
-            <div class="product-price">300000đ</div>
-        </div>
-        <div class="product-item">
-            <div class="product-img">
-                <img src="../Img/2.jpg" alt="">
-                <div class="product-click">
-                    <div class="product-click-view">
-                        <a href="">Xem chi tiết</a>
-                    </div>
-                    <div class="product-click-add">
-                        <p>Thêm vào giỏ hàng</p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-text">Áo adidas xanh</div>
-            <div class="product-price">300.000đ</div>
-        </div>
-    </div> -->
 </div>
 <script>
     function ThemGioHang() {

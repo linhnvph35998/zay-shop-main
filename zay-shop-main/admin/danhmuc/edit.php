@@ -19,8 +19,8 @@ if (is_file($image)) {
         <div class="form-content">
             <form action="index.php?act=editdm" method="POST" enctype="multipart/form-data">
                 <div class="row-input">
-                    <label> Id danh mục </label> <br>
-                    <input type="text" name="id" value="<?= $id ?>">
+                    <!-- <label></label> <br> -->
+                    <input type="hidden" name="id" value="<?= $id ?>">
                 </div>
                 <div class="row-input">
                     <label>Tên danh mục</label> <br>

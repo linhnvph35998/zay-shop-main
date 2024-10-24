@@ -1,8 +1,8 @@
 <?php
-if(isset($donhang) && is_array($donhang)){
+if (isset($donhang) && is_array($donhang)) {
     extract($donhang);
-}   
-if(isset($_SESSION['user'])){
+}
+if (isset($_SESSION['user'])) {
     $name = $_SESSION['user']['username'];
     $diachi = $_SESSION['user']['diachi'];
     $email = $_SESSION['user']['email'];
@@ -20,11 +20,11 @@ if(isset($_SESSION['user'])){
         <div class="bill-information">
             <h3 class="box_title">Thông tin đơn hàng</h3>
             <div class="box-bill" style="min-height: 20px;">
-                <p>Mã đơn hàng: DAM-<?=$id?></p>
-                <p>Ngày đặt hàng:<?=$thoigiandathang?> </p>
+                <p>Mã đơn hàng: DAM-<?= $id ?></p>
+                <p>Ngày đặt hàng:<?= $thoigiandathang ?> </p>
                 <p>Phương thức thanh toán:
                     <?= $donhang['phuongthucthanhtoan'] == 0 ? "Chuyển khoản" : "Thanh toán khi nhận hàng" ?></p>
-                <p>Ghi chú: <?=$donhang['ghichu']?></p>
+                <p>Ghi chú: <?= $donhang['ghichu'] ?></p>
             </div>
             <h3 class="box_title">Thông tin đặt hàng</h3>
             <div class="box-bill" style="min-height: 20px;">
@@ -47,32 +47,32 @@ if(isset($_SESSION['user'])){
                     <td width="150px">Trạng thái</td>
                 </tr>
                 <?php
-                    foreach ($giohang as $value) {
-                        extract($value);
-                        if (isset($value['trangthai']) && $value['trangthai']) {
-                            $tt = $value['trangthai'];
-                        } else {
-                            $tt = 0;
-                        }
-                        $ttdh = trangthai_donhang($tt);
-                        echo '<tr>
-                        <td style="padding: 10px"><img src="../Img/'.$img.'" width="120px"/></td>
-                        <td style="padding: 10px">'.$name.'</td>
-                        <td style="padding: 10px">'.$giatien.'đ</td>
-                        <td style="padding: 10px">'.$soluong.' </td>
-                        <td style="padding: 10px">'.($giatien * $soluong).'đ</td>
-                        <td style="padding: 10px">'.$ttdh.'</td>
+                foreach ($giohang as $value) {
+                    extract($value);
+                    if (isset($value['trangthai']) && $value['trangthai']) {
+                        $tt = $value['trangthai'];
+                    } else {
+                        $tt = 0;
+                    }
+                    $ttdh = trangthai_donhang($tt);
+                    echo '<tr>
+                        <td style="padding: 10px"><img src="../Img/' . $img . '" width="120px"/></td>
+                        <td style="padding: 10px">' . $name . '</td>
+                        <td style="padding: 10px">' . $giatien . 'đ</td>
+                        <td style="padding: 10px">' . $soluong . ' </td>
+                        <td style="padding: 10px">' . ($giatien * $soluong) . 'đ</td>
+                        <td style="padding: 10px">' . $ttdh . '</td>
                         </tr>';
-                    } 
-                    ?>
+                }
+                ?>
             </table>
-            <?php 
+            <?php
             $tong = 0;
             foreach ($giohang as $value) {
                 extract($value);
                 $tong += $giatien * $soluong;
             }
-            echo "<h3 style='margin: 15px 0px'>Giá sản phẩm: ".$tong."đ</h3>";
+            echo "<h3 style='margin: 15px 0px'>Giá sản phẩm: " . $tong . "đ</h3>";
             ?>
         </div>
     </div>

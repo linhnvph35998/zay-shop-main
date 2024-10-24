@@ -1,5 +1,5 @@
 <?php
-if(is_array($taikhoan)){
+if (is_array($taikhoan)) {
     extract($taikhoan);
 }
 ?>
@@ -24,34 +24,34 @@ if(is_array($taikhoan)){
         <div class="form-content">
             <form action="index.php?act=edittk" method="POST">
                 <div class="row-input">
-                    <label> Mã khách hàng </label> <br>
-                    <input type="text" name="id" value="<?=$id?>">
+                    <!-- <label> Mã khách hàng </label> <br> -->
+                    <input type="hidden" name="id" value="<?= $id ?>">
                 </div>
                 <div class="row-input">
 
                     <label> Email</label> <br>
-                    <input type="text" name="email" value="<?=$email?>">
+                    <input type="text" name="email" value="<?= $email ?>">
                 </div>
                 <div class="row-input">
                     <label>Địa chỉ </label> <br>
-                    <input type="text" name="diachi" value="<?=$diachi?>">
+                    <input type="text" name="diachi" value="<?= $diachi ?>">
                 </div>
                 <div class="row-input">
                     <label>SĐT </label> <br>
-                    <input type="text" name="sdt" value="<?=$sdt?>">
+                    <input type="text" name="sdt" value="<?= $sdt ?>">
                 </div>
                 <div class="row-input">
                     <label>Vai trò </label> <br>
                     <select name="idvaitro" id="">
-                        <?php  foreach ($vaitro as $vt) {
-                        extract($vt);
-                    if($id === $idvaitro){
-                        echo '<option value="'.$id.'" selected>'.$tenvaitro.'</option>';
-                    } else {
-                        echo '<option value="'.$id.'">'.$tenvaitro.'</option>';
-                    }
-                }
-                    ?>
+                        <?php foreach ($vaitro as $vt) {
+                            extract($vt);
+                            if ($id == $idvaitro) {
+                                echo '<option value="' . $id . '" selected>' . $tenvaitro . '</option>';
+                            } else {
+                                echo '<option value="' . $id . '">' . $tenvaitro . '</option>';
+                            }
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="row-btn">
@@ -62,13 +62,13 @@ if(is_array($taikhoan)){
     </div>
 </body>
 <script>
-function confirmEdit() {
-    if (confirm("Bạn có hoàn tất sửa không ?")) {
-        document.location = "index.php?act=listtk";
-    } else {
-        return false;
+    function confirmEdit() {
+        if (confirm("Bạn có hoàn tất sửa không ?")) {
+            document.location = "index.php?act=listtk";
+        } else {
+            return false;
+        }
     }
-}
 </script>
 
 </html>

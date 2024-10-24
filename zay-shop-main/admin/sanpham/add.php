@@ -5,8 +5,8 @@
     <div class="form-content">
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="row-input">
-                <label> Mã sản phẩm </label> <br>
-                <input type="text" name="id" required>
+                <!-- <label> Mã sản phẩm </label> <br> -->
+                <input type="hidden" name="id" required>
             </div>
             <div class="row-input">
                 <label>Tên Sản phẩm </label> <br>
@@ -35,12 +35,12 @@
                 </select>
             </div>
             <div class="row-input">
-                <label>Lượt xem </label> <br>
-                <input type="text" name="luotxem" required>
+                <!-- <label>Lượt xem </label> <br> -->
+                <input type="hidden" name="luotxem" required>
             </div>
             <div class="row-input">
-                <label>Số lượng </label> <br>
-                <input type="text" name="soluong" required>
+                <!-- <label>Số lượng </label> <br> -->
+                <input type="hidden" name="soluong" required>
             </div>
             <div class="row-btn">
                 <input onclick="return confirmAdd()" type="submit" name="them" value="Thêm">

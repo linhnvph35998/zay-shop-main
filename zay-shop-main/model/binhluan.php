@@ -33,13 +33,6 @@ function loadall_binhluan_admin()
     $sql = "SELECT binhluan.*, khachhang.username as tennguoidung, sanpham.name as tensanpham FROM binhluan
     JOIN khachhang ON binhluan.iduser = khachhang.id
     JOIN sanpham ON binhluan.idpro = sanpham.id ORDER BY binhluan.id DESC"; 
-            
-
-    // if ($idpro > 1) {
-    //     $sql .= " AND binhluan.idpro='" . $idpro . "'";
-    // }
-
-    // $sql .= " ORDER BY binhluan.id DESC";
     $result = pdo_query($sql);
 
     return $result;
