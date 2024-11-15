@@ -30,7 +30,7 @@ if (isset($_SESSION["user"])) {
     extract($_SESSION['user']);
     if ($trangthai == 1) {
         echo "Bạn đã bị khóa tài khoản vui lòng liên hệ admin để khôi phục lại tài khoản của bạn";
-        echo "<form action='' method='post'>
+        echo "<form action='index.php' method='post'>
         <input type='submit' name='dangxuat' value='Quay lại trang chủ và đăng xuất' onclick='return dangXuat();'/>
         </form>";
         die;
